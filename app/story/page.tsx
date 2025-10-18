@@ -1,62 +1,63 @@
 // app/story/page.tsx
+import PageHero from "@/components/PageHero";
 
 export const metadata = {
-  title: "Our Story – The Anchor Hotel",
+  title: "Our Story • The Anchor",
   description:
-    "Six centuries of welcome on the South Tyne—learn about The Anchor Hotel's history in Haydon Bridge.",
+    "Six centuries on the South Tyne — The Anchor’s story from court & gaol to riverside inn.",
 };
 
 export default function StoryPage() {
   return (
     <>
-      {/* Hero with /public/anchor-hero.jpg */}
-      <section
-        className="relative w-full h-[48vh] min-h-[360px] overflow-hidden"
-        aria-label="The Anchor Hotel exterior"
-        style={{
-          backgroundImage: "url('/anchor-hero.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-transparent" />
-        <div className="relative h-full flex items-end">
-          <div className="container-wide pb-10">
-            <div className="max-w-3xl">
-              <div className="text-offwhite/85 uppercase tracking-[0.2em] text-xs">
-                Est. 1422
-              </div>
-              <h1 className="text-offwhite font-display text-4xl sm:text-5xl mt-2">
-                Six Centuries of Welcome
-              </h1>
-              <p className="text-offwhite/85 mt-3">
-                For over six centuries, The Anchor has stood on the banks of the
-                South Tyne, welcoming travellers and serving locals in the heart
-                of Haydon Bridge.
+      <PageHero
+        eyebrow="Est. 1422"
+        title="Six Centuries of Welcome"
+        sub="From court & gaol to riverside inn — still rooted in Northumberland craft."
+        image="/anchor-hero.jpg"
+        position="center 35%"
+        align="left"
+      />
+
+      <section className="page-section">
+        <div className="container-wide">
+          <h2 className="text-3xl sm:text-4xl font-display font-bold">
+            From Court &amp; Gaol to Riverside Inn
+          </h2>
+          <div className="rule my-6" />
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="page-card">
+              <p className="text-sm text-timber/70">1422 — The Beginning</p>
+              <h3 className="text-lg font-display font-semibold mt-1">Court &amp; Gaol</h3>
+              <p className="mt-2 text-timber/85">
+                Records point to a courthouse and gaol on this site.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Body */}
-      <section className="section">
-        <div className="container-narrow">
-          <div className="prose prose-lg max-w-none prose-headings:font-display prose-headings:font-semibold prose-p:text-timber/85">
-            <h2>The Beginning</h2>
-            <p>
-              Founded in 1422, The Anchor Bridge began as a riverside inn
-              serving medieval traders and travellers crossing the South Tyne.
-              The building’s original stone foundations still stand today—a
-              testament to centuries of Northumberland craftsmanship.
-            </p>
+            <div className="page-card">
+              <p className="text-sm text-timber/70">1700s</p>
+              <h3 className="text-lg font-display font-semibold mt-1">Coaching Inn</h3>
+              <p className="mt-2 text-timber/85">
+                Travellers crossed the South Tyne and supped by the fire.
+              </p>
+            </div>
 
-            <h2>A Living Local</h2>
-            <p>
-              Today, we’re a village pub, restaurant, and inn—still rooted in
-              the craft and rhythm of Northumberland life.
-            </p>
+            <div className="page-card">
+              <p className="text-sm text-timber/70">1900s</p>
+              <h3 className="text-lg font-display font-semibold mt-1">Riverside Tavern</h3>
+              <p className="mt-2 text-timber/85">
+                Local ales and salmon suppers became our staples.
+              </p>
+            </div>
+
+            <div className="page-card">
+              <p className="text-sm text-timber/70">Today</p>
+              <h3 className="text-lg font-display font-semibold mt-1">Inn &amp; Café</h3>
+              <p className="mt-2 text-timber/85">
+                Rooms with breakfast, a lively bar, and a quiet café garden.
+              </p>
+            </div>
           </div>
         </div>
       </section>
