@@ -8,6 +8,15 @@
   --cream:  #F7F3EB;
   --brown:  #3B2C22;
   --offwhite: #FAFAF8;
+
+  /* Navbar height variable (adjust if needed) */
+  --nav-h: 72px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-h: 64px; /* smaller header on mobile */
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -41,7 +50,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Layout helpers */
 .section-padding {
-  /* was py-16 md:py-24; trimmed to reduce the big white gaps */
   @apply py-12 md:py-16 px-4 md:px-8;
 }
 .container-custom {
@@ -53,28 +61,6 @@ h1, h2, h3, h4, h5, h6 {
   @apply gap-6 md:gap-8;
 }
 
-/* New: card base to make cards stretch evenly in grids */
+/* Card base (used in venue, rooms, etc.) */
 .card-base {
-  @apply bg-offwhite border border-cream rounded-lg shadow-sm hover:shadow-md transition-shadow h-full flex flex-col overflow-hidden;
-}
-.card-body {
-  @apply p-5 flex-1 flex flex-col;
-}
-
-/* New: consistent image aspect ratios for cards (pick one) */
-.img-4-3  { @apply relative aspect-[4/3]; }   /* good for room photos */
-.img-16-9 { @apply relative aspect-[16/9]; }  /* good for venue/hero thumbs */
-.img-cover { @apply object-cover; }
-
-/* === Hero Video Fix: Hide Black Borders === */
-.video-bleed {
-  position: absolute;
-  top: -6px;
-  left: -6px;
-  width: calc(100% + 12px);
-  height: calc(100% + 12px);
-  object-fit: cover;
-  object-position: center center;
-  transform: translateZ(0);
-  will-change: transform;
-}
+  @apply bg-offwhite border border-cream rounded-lg shadow-sm hover:shadow-md
