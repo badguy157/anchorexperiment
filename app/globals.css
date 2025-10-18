@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Theme */
 :root {
   --forest: #0F3D2E;
   --brass:  #C6A15B;
@@ -9,16 +10,11 @@
   --brown:  #3B2C22;
   --offwhite: #FAFAF8;
 
-  /* Navbar height variable (adjust if needed) */
-  --nav-h: 72px;
+  /* tweak these if your header height changes */
+  --hero-overscan: 22px; /* pushes video slightly beyond edges to hide letterbox lines */
 }
 
-@media (max-width: 768px) {
-  :root {
-    --nav-h: 64px; /* smaller header on mobile */
-  }
-}
-
+/* Motion prefs */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -30,6 +26,7 @@
   }
 }
 
+/* Base */
 body {
   background-color: var(--offwhite);
   color: var(--brown);
@@ -50,17 +47,84 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Layout helpers */
 .section-padding {
+  /* trimmed a bit to tighten white space */
   @apply py-12 md:py-16 px-4 md:px-8;
 }
 .container-custom {
   @apply max-w-7xl mx-auto;
 }
 
-/* New: tighter grid option for dense sections */
-.grid-tight {
-  @apply gap-6 md:gap-8;
-}
+/* Tighter grid option */
+.grid-tight { @apply gap-6 md:gap-8; }
 
 /* Card base (used in venue, rooms, etc.) */
 .card-base {
-  @apply bg-offwhite border border-cream rounded-lg shadow-sm hover:shadow-md
+  @apply bg-offwhite border border-cream rounded-lg shadow-sm hover:shadow-md transition-shadow h-full flex flex-col overflow-hidden;
+}
+.card-body { @apply p-5 flex-1 flex flex-col; }
+
+/* Image helpers */
+.img-4-3  { @apply relative aspect-[4/3]; }
+.img-16-9 { @apply relative aspect-[16/9]; }
+.img-cover { @apply object-cover; }
+
+/* ---------------------- */
+/* HERO VIDEO + OVERLAY   */
+/* ---------------------- */
+
+/* Section wrapper so the video can absolutely fill it */
+.hero {
+  position: relative;
+  min-height: 90vh;
+  height: 90vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* important to hide overscan outside bounds */
+}
+
+/* The video fills and slightly overscans past the edges to hide thin black bars */
+.video-bleed {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* fill section */
+  object-position: center;
+  /* Overscan: push up a bit and grow the height to hide any letterbox lines */
+  top: calc(var(--hero-overscan) * -1);
+  height: calc(100% + (var(--hero-overscan) * 2));
+  filter: brightness(0.78); /* subtle darken for legible text */
+}
+
+/* Text/content on top of the video */
+.hero-overlay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--offwhite);
+}
+
+/* Slight text-glow for readability */
+.hero-overlay h1,
+.hero-overlay p {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.45);
+}
+
+/* Optional: make the primary/secondary buttons feel premium */
+.hero-overlay .btn-primary,
+.hero-overlay .btn-secondary {
+  @apply rounded-lg shadow-md hover:shadow-lg;
+  transform: translateZ(0);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.hero-overlay .btn-primary:hover,
+.hero-overlay .btn-secondary:hover {
+  transform: translateY(-1px);
+}
+
+/* Tweak overscan on small screens if you still see a faint line */
+@media (max-width: 640px) {
+  :root { --hero-overscan: 26px; }
+}
