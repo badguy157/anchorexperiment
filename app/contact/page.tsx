@@ -3,7 +3,7 @@
 import React from 'react';
 
 export default function ContactPage(){
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     alert('Thanks! This demo form does not send yet.');
   };
@@ -12,11 +12,11 @@ export default function ContactPage(){
     <>
       <section
         className="page-hero"
-        style={{ backgroundImage: "url('/hero.jpg')" }}  // replace with a dedicated contact photo anytime
+        style={{ backgroundImage: "url('/hero.jpg')" }}
       >
         <div className="page-hero-inner">
           <h1>Contact</h1>
-          <p className="mt-3">We’d love to hear from you</p>
+          <p className="mt-3">We’d love to hear from you.</p>
         </div>
       </section>
 
@@ -24,7 +24,7 @@ export default function ContactPage(){
         <div className="grid gap-6 md:grid-cols-2">
           <div className="page-card">
             <h3 className="text-xl font-semibold">Send us a message</h3>
-            <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
+            <form className="mt-4 space-y-4" onSubmit={onSubmit}>
               <div>
                 <label className="block text-sm font-medium text-timber/80">Name</label>
                 <input className="mt-1 w-full rounded-lg border border-stone/60 bg-white/95 px-3 py-2" placeholder="Your name" required />

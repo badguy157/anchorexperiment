@@ -2,17 +2,14 @@
 export default function StoryPage() {
   return (
     <>
-      {/* Use any photo you like; /hero.jpg exists already (poster for the video) */}
+      {/* Use the hero poster as a safe default; swap to a dedicated image later if you want */}
       <section
         className="page-hero"
         style={{ backgroundImage: "url('/hero.jpg')" }}
       >
         <div className="page-hero-inner">
           <h1>Our Story</h1>
-          <p className="mt-3">
-            Six centuries on the South Tyne — from riverside court house to inn,
-            tavern, and village pub.
-          </p>
+          <p className="mt-3">Six centuries on the South Tyne.</p>
         </div>
       </section>
 
@@ -25,9 +22,9 @@ export default function StoryPage() {
             Six Centuries of Welcome
           </h2>
           <p className="mt-3 text-timber/80">
-            For over six centuries, The Anchor has stood on the banks of the
-            South Tyne, welcoming travellers and serving locals in the heart of
-            Haydon Bridge.
+            For over six centuries, The Anchor has stood on the banks of the South
+            Tyne, welcoming travellers and serving locals in the heart of Haydon
+            Bridge.
           </p>
         </div>
 
@@ -35,9 +32,8 @@ export default function StoryPage() {
           <div className="page-card">
             <h3 className="font-semibold">1422 — The Beginning</h3>
             <p className="mt-2 text-timber/80">
-              Founded in 1422, the Anchor began as a riverside inn serving
-              medieval traders and travellers crossing the South Tyne. The
-              building’s original stone foundations still stand today.
+              Founded in 1422, The Anchor began as a riverside inn serving medieval
+              traders and travellers crossing the South Tyne.
             </p>
           </div>
 
