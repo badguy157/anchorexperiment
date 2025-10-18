@@ -1,6 +1,20 @@
+// app/rooms/page.tsx
 'use client';
 
 import { useState } from 'react';
+
+/** Safe image that falls back to /anchor-hero.jpg to avoid blank boxes */
+function SafeImg(props: React.ImgHTMLAttributes<HTMLImageElement>) {
+  const [src, setSrc] = useState(props.src || '/anchor-hero.jpg');
+  return (
+    <img
+      {...props}
+      src={src}
+      onError={() => setSrc('/anchor-hero.jpg')}
+      alt={props.alt || ''}
+    />
+  );
+}
 
 type Room = {
   title: string;
@@ -10,47 +24,87 @@ type Room = {
   images: string[];
 };
 
+/** EXACT paths from your screenshot */
 const ROOMS: Room[] = [
   {
     title: 'Double Room – Ensuite',
-    desc: 'Comfortable double with ensuite, classic furnishings and everything you need for a cosy stay.',
+    desc:
+      'Comfortable double with ensuite, classic furnishings and everything you need for a cosy stay.',
     priceFrom: '£95 / night',
-    href: '/rooms#double',
-    images: ['/rooms/double-1.jpg','/rooms/double-2.jpg','/rooms/double-3.jpg'],
+    href: '/rooms#double-ensuite',
+    images: [
+      '/rooms/double-ensuite/double-ensuite-1.jpg',
+      '/rooms/double-ensuite/double-ensuite-2.jpg',
+      '/rooms/double-ensuite/double-ensuite-3.jpg',
+      '/rooms/double-ensuite/double-ensuite-4.jpg',
+      '/rooms/double-ensuite/double-ensuite-5.jpg',
+    ],
+  },
+  {
+    title: 'Double Room – Ensuite (Private Bathroom)',
+    desc:
+      'A double with a private bathroom across the hall — your own key, towels, and full amenities.',
+    priceFrom: '£90 / night',
+    href: '/rooms#double-room-bathroom',
+    images: [
+      '/rooms/double-room-bathroom/bedroom1.jpg',
+      '/rooms/double-room-bathroom/bedroom2.jpg',
+      '/rooms/double-room-bathroom/bedroom3.jpg',
+      '/rooms/double-room-bathroom/bedroom4.jpg',
+    ],
   },
   {
     title: 'Twin Room – Ensuite',
     desc: 'Two beds, ensuite bathroom and a peaceful night by the river.',
     priceFrom: '£95 / night',
-    href: '/rooms#twin',
-    images: ['/rooms/twin-1.jpg','/rooms/twin-2.jpg'],
+    href: '/rooms#twin-room-ensuite',
+    images: [
+      '/rooms/twin-room-ensuite/twin1.jpg',
+      '/rooms/twin-room-ensuite/twin2.jpg',
+      '/rooms/twin-room-ensuite/twin3.jpg',
+      '/rooms/twin-room-ensuite/twin4.jpg',
+      '/rooms/twin-room-ensuite/twin5.jpg',
+      '/rooms/twin-room-ensuite/twin6.jpg',
+    ],
   },
   {
-    title: 'Family Room',
-    desc: 'A flexible space for families, close to everything in the village.',
+    title: 'Family Suite',
+    desc:
+      'A flexible space for families, close to everything in the village.',
     priceFrom: '£115 / night',
-    href: '/rooms#family',
-    images: ['/rooms/family-1.jpg','/rooms/family-2.jpg','/rooms/family-3.jpg'],
+    href: '/rooms#family-suite',
+    images: [
+      '/rooms/family-suite/family1.jpg',
+      '/rooms/family-suite/family2.jpg',
+      '/rooms/family-suite/family3.jpg',
+      '/rooms/family-suite/family4.jpg',
+      '/rooms/family-suite/family5.jpg',
+    ],
   },
 ];
 
 function RoomCard({ room }: { room: Room }) {
+  const photos = room.images?.length ? room.images : ['/anchor-hero.jpg'];
   const [idx, setIdx] = useState(0);
-  const photos = room.images;
 
-  const go = (d: -1 | 1) => setIdx(s => (s + d + photos.length) % photos.length);
+  const go = (d: -1 | 1) => setIdx((s) => (s + d + photos.length) % photos.length);
 
   return (
     <article className="card overflow-hidden">
       {/* Image / Carousel */}
       <div className="relative">
-        <img src={photos[idx]} alt="" className="w-full h-56 md:h-64 object-cover" />
+        <SafeImg
+          src={photos[idx]}
+          alt=""
+          className="w-full h-56 md:h-64 object-cover"
+        />
+
         {/* photo count badge */}
         <span className="absolute top-3 right-3 rounded-full bg-black/55 text-white text-xs px-2 py-1 shadow">
           {photos.length} {photos.length === 1 ? 'photo' : 'photos'}
         </span>
 
-        {/* arrows (if multiple) */}
+        {/* arrows */}
         {photos.length > 1 && (
           <>
             <button
@@ -75,7 +129,9 @@ function RoomCard({ room }: { room: Room }) {
               {photos.map((_, i) => (
                 <span
                   key={i}
-                  className={`h-1.5 w-1.5 rounded-full ${i === idx ? 'bg-white' : 'bg-white/55'}`}
+                  className={`h-1.5 w-1.5 rounded-full ${
+                    i === idx ? 'bg-white' : 'bg-white/55'
+                  }`}
                 />
               ))}
             </div>
@@ -112,7 +168,11 @@ export default function RoomsPage() {
     <>
       <section
         className="page-hero"
-        style={{ backgroundImage: "url('/hero.jpg')" }}
+        style={{
+          backgroundImage: "url('/anchor-hero.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       >
         <div className="page-hero-inner">
           <h1>Rooms</h1>
