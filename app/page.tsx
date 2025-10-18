@@ -1,6 +1,6 @@
 import HeroMedia from '@/components/HeroMedia';
 import StickyBook from '@/components/StickyBook';
-import EventStrip from '@/components/EventStrip';
+import Eventstrip from '@/components/Eventstrip'; // <-- match the actual filename
 import Timeline from '@/components/Timeline';
 import BookingWidget from '@/components/BookingWidget';
 import Reviews from '@/components/Reviews';
@@ -27,7 +27,7 @@ export default function Home() {
 
       <BookingWidget />
 
-      <EventStrip />
+      <Eventstrip />
 
       <section className="section">
         <div className="container-wide">
