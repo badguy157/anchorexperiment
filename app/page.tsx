@@ -6,11 +6,11 @@ import Timeline from "@/components/Timeline";
 import BookingWidget from "@/components/BookingWidget";
 import Reviews from "@/components/Reviews";
 import VenueCard from "@/components/VenueCard";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
       <HeroMedia />
       <StickyBook />
 
@@ -26,13 +26,12 @@ export default function Home() {
             </p>
 
             <div className="mt-5">
-              <a
+              <Link
                 href="/rooms"
-                className="btn btn-gold btn--sm"
-                aria-label="Browse rooms"
+                className="btn-cta rounded-xl px-5 py-2.5 no-underline"
               >
                 Browse Rooms
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -75,10 +74,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Timeline */}
       <Timeline />
-
-      {/* Reviews */}
       <Reviews />
 
       {/* Find Us + Map */}
@@ -99,7 +95,7 @@ export default function Home() {
               />
             </div>
 
-            {/* Details / Call to action */}
+            {/* Details / CTA */}
             <div className="card p-6">
               <div className="space-y-2">
                 <h3 className="text-xl font-display font-bold">The Anchor Hotel</h3>
@@ -130,8 +126,7 @@ export default function Home() {
                   href="https://www.google.com/maps/dir/?api=1&destination=The+Anchor+Hotel+Haydon+Bridge"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-gold btn--sm"
-                  aria-label="Open Google Maps directions to The Anchor Hotel"
+                  className="btn-cta rounded-xl px-4 py-2 no-underline inline-flex"
                 >
                   Get directions
                 </a>

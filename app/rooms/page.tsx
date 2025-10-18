@@ -1,120 +1,107 @@
 // app/rooms/page.tsx
-import PageHero from "@/components/PageHero";
-import Image from "next/image";
+import RoomGallery from "@/components/RoomGallery";
 
-export const metadata = {
-  title: "Rooms & Rates • The Anchor",
-  description:
-    "Simple, comfortable rooms with breakfast included — a short walk from the bridge.",
-};
+const doubleImages = [
+  "/rooms/double-ensuite/double-ensuite-1.jpg",
+  "/rooms/double-ensuite/double-ensuite-2.jpg",
+  "/rooms/double-ensuite/double-ensuite-3.jpg",
+  "/rooms/double-ensuite/double-ensuite-4.jpg",
+  "/rooms/double-ensuite/double-ensuite-5.jpg",
+];
 
-type Room = {
-  title: string;
-  price: string;
-  points: string[];
-  images: string[]; // from /public/rooms/...
-};
+const twinImages = [
+  "/rooms/twin-room-ensuite/twin1.jpg",
+  "/rooms/twin-room-ensuite/twin2.jpg",
+  "/rooms/twin-room-ensuite/twin3.jpg",
+  "/rooms/twin-room-ensuite/twin4.jpg",
+  "/rooms/twin-room-ensuite/twin5.jpg",
+  "/rooms/twin-room-ensuite/twin6.jpg",
+];
 
-const rooms: Room[] = [
-  {
-    title: "Double Room – Ensuite",
-    price: "From £95 / night",
-    points: [
-      "Ensuite bathroom",
-      "Breakfast included",
-      "Free Wi-Fi",
-      "Tea & coffee",
-      "Sleeps up to 2",
-    ],
-    images: [
-      "/rooms/double-ensuite/double-ensuite-1.jpg",
-      "/rooms/double-ensuite/double-ensuite-2.jpg",
-    ],
-  },
-  {
-    title: "Twin Room – Ensuite",
-    price: "From £95 / night",
-    points: [
-      "Two beds",
-      "Ensuite bathroom",
-      "Breakfast included",
-      "Peaceful night by the river",
-    ],
-    images: ["/rooms/twin-room-ensuite/twin1.jpg"],
-  },
-  {
-    title: "Family Room",
-    price: "From £115 / night",
-    points: ["Flexible space", "Breakfast included", "Close to the village"],
-    images: ["/rooms/family-suite/family1.jpg"],
-  },
-  {
-    title: "Double – Private Bathroom",
-    price: "From £90 / night",
-    points: [
-      "Private bathroom (separate)",
-      "Breakfast included",
-      "Great value",
-    ],
-    images: ["/rooms/double-room-bathroom/bedroom1.jpg"],
-  },
+const familyImages = [
+  "/rooms/family-suite/family1.jpg",
+  "/rooms/family-suite/family2.jpg",
+  "/rooms/family-suite/family3.jpg",
+  "/rooms/family-suite/family4.jpg",
+  "/rooms/family-suite/family5.jpg",
 ];
 
 export default function RoomsPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Stay"
-        title="Rooms & Rates"
-        sub="Simple, comfortable rooms with breakfast included — a short walk from the bridge."
-        image="/anchor-hero.jpg"
-        position="center 40%"
-        align="left"
-      />
+      {/* Page hero */}
+      <div
+        className="page-hero"
+        style={{ backgroundImage: `url('/anchor-hero.jpg')` }}
+      >
+        <div className="page-hero-inner">
+          <h1>Stay</h1>
+          <p>Comfortable riverside rooms with breakfast included.</p>
+        </div>
+      </div>
 
-      <section className="page-section">
-        <div className="container-wide grid md:grid-cols-2 gap-6">
-          {rooms.map((room) => (
-            <article key={room.title} className="page-card p-0 overflow-hidden">
-              {/* lead image */}
-              {room.images?.[0] ? (
-                <div className="relative h-64 w-full">
-                  <Image
-                    fill
-                    src={room.images[0]}
-                    alt={room.title}
-                    className="object-cover"
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    priority={false}
-                  />
-                </div>
-              ) : null}
-
-              <div className="p-5">
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-xl font-display font-semibold">{room.title}</h3>
-                  <p className="text-forest font-semibold">{room.price}</p>
-                </div>
-
-                <ul className="mt-3 space-y-1 text-timber/85">
-                  {room.points.map((pt) => (
-                    <li key={pt}>• {pt}</li>
-                  ))}
-                </ul>
-
-                <div className="mt-4">
-                  <a href="#availability" className="room-cta inline-flex">
-                    Check availability
-                  </a>
-                </div>
+      {/* spacing below hero */}
+      <section className="page-section pt-12">
+        <div className="grid lg:grid-cols-2 gap-8 container-wide">
+          {/* Double */}
+          <article className="card p-0 overflow-hidden">
+            <RoomGallery images={doubleImages} alt="Double Room – Ensuite" />
+            <div className="p-6">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-display font-bold">Double Room – Ensuite</h2>
+                <div className="text-forest font-semibold">From £95 / night</div>
               </div>
-            </article>
-          ))}
+              <ul className="mt-3 list-disc pl-5 space-y-1">
+                <li>Ensuite bathroom</li>
+                <li>Breakfast included</li>
+                <li>Free Wi-Fi</li>
+                <li>Tea &amp; coffee</li>
+                <li>Sleeps up to 2</li>
+              </ul>
+              <a href="/book" className="room-cta mt-5 inline-block text-center">
+                Check availability
+              </a>
+            </div>
+          </article>
+
+          {/* Twin */}
+          <article className="card p-0 overflow-hidden">
+            <RoomGallery images={twinImages} alt="Twin Room – Ensuite" />
+            <div className="p-6">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-display font-bold">Twin Room – Ensuite</h2>
+                <div className="text-forest font-semibold">From £95 / night</div>
+              </div>
+              <ul className="mt-3 list-disc pl-5 space-y-1">
+                <li>Two beds</li>
+                <li>Ensuite bathroom</li>
+                <li>Breakfast included</li>
+                <li>Peaceful night by the river</li>
+              </ul>
+              <a href="/book" className="room-cta mt-5 inline-block text-center">
+                Check availability
+              </a>
+            </div>
+          </article>
+
+          {/* Family */}
+          <article className="card p-0 overflow-hidden lg:col-span-2">
+            <RoomGallery images={familyImages} alt="Family Room" />
+            <div className="p-6">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-display font-bold">Family Room</h2>
+                <div className="text-forest font-semibold">From £115 / night</div>
+              </div>
+              <p className="mt-3">
+                A flexible space for families, close to everything in the village.
+              </p>
+              <a href="/book" className="room-cta mt-5 inline-block text-center">
+                Check availability
+              </a>
+            </div>
+          </article>
         </div>
       </section>
-
-      {/* Availability anchor (placeholder to avoid broken link) */}
-      <div id="availability" />
     </>
   );
 }
