@@ -11,66 +11,36 @@ export default function Home() {
       {/* HERO (video) */}
 {/* HERO (video, cropped + polished copy/buttons) */}
 <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-  {/* Video background */}
-  <div className="absolute inset-0 z-0 overflow-hidden">
-    <video
-      className="h-full w-full object-cover scale-110 md:scale-[1.15] will-change-transform"
-      autoPlay
-      muted
-      loop
-      playsInline
-      poster="/hero-poster.jpg"
-      preload="metadata"
-    >
-      <source src="/hero.webm" type="video/webm" />
-      <source src="/hero.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+  <video
+    className="absolute inset-0 h-full w-full object-cover [object-position:50%_60%]"
+    autoPlay
+    muted
+    loop
+    playsInline
+    poster="/hero-poster.jpg"
+    preload="metadata"
+  >
+    <source src="/hero-loop.webm" type="video/webm" />
+    <source src="/hero-loop.mp4" type="video/mp4" />
+  </video>
 
-    {/* Readability overlays */}
-    <div className="absolute inset-0 bg-black/25" aria-hidden="true" />
-    <div className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/40 to-transparent" />
-    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/50 to-transparent" />
-  </div>
-
-  {/* Copy + CTAs */}
-  <div className="relative z-10 mx-auto max-w-4xl px-4">
-    <div className="rounded-2xl border border-white/15 bg-black/30 backdrop-blur-sm shadow-[0_10px_30px_rgba(0,0,0,0.35)] p-6 md:p-10">
-      <h1 className="font-heading text-5xl md:text-7xl font-extrabold tracking-tight text-offwhite drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-        The Anchor Hotel
-      </h1>
-      <p className="font-heading text-2xl md:text-3xl mt-2 text-offwhite/95 drop-shadow-[0_2px_6px_rgba(0,0,0,0.55)]">
-        Riverside Tavern &amp; Inn Since 1422
-      </p>
-      <p className="mt-3 md:mt-4 text-base md:text-lg text-offwhite/90 leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">
-        Eat, drink, and stay by the South Tyne in the heart of Haydon Bridge.
-      </p>
-
-      <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center">
-        {/* Primary */}
-        <Link
-          href="/rooms"
-          className="inline-flex items-center justify-center rounded-xl px-6 py-3 text-base md:text-lg font-semibold
-                     bg-[var(--brass)] text-forest shadow-lg shadow-black/25
-                     ring-1 ring-black/20 hover:brightness-105 hover:shadow-xl hover:-translate-y-0.5
-                     transition duration-200"
-        >
-          Check availability
-        </Link>
-
-        {/* Secondary */}
-        <Link
-          href="/eat-and-drink"
-          className="inline-flex items-center justify-center rounded-xl px-6 py-3 text-base md:text-lg font-semibold
-                     bg-white/90 text-[var(--forest)] hover:bg-white shadow-lg shadow-black/20
-                     ring-1 ring-black/10 hover:-translate-y-0.5 transition duration-200"
-        >
-          Eat &amp; Drink
-        </Link>
-      </div>
+  <div className="relative z-10 text-center text-offwhite px-4 max-w-4xl drop-shadow-lg">
+    <h1 className="font-heading text-6xl md:text-7xl font-extrabold mb-4 tracking-tight">The Anchor Hotel</h1>
+    <p className="font-heading text-2xl md:text-3xl mb-3 opacity-90">Riverside Tavern & Inn Since 1422</p>
+    <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
+      Eat, drink, and stay by the South Tyne in the heart of Haydon Bridge.
+    </p>
+    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <Link href="/rooms" className="btn-primary text-lg px-8 py-3 rounded-lg shadow-md hover:scale-105 transition-transform">
+        Check Availability
+      </Link>
+      <Link href="/eat-and-drink" className="btn-secondary text-lg px-8 py-3 rounded-lg bg-offwhite text-forest hover:bg-cream shadow-md hover:scale-105 transition-transform">
+        Eat & Drink
+      </Link>
     </div>
   </div>
 </section>
+
 
 
 
