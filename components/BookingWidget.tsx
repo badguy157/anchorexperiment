@@ -2,75 +2,39 @@
 
 import { useState } from 'react';
 
-export default function BookingWidget() {
-  const [checkIn, setCheckIn] = useState('');
-  const [checkOut, setCheckOut] = useState('');
+export default function BookingWidget(){
+  const [dateIn, setDateIn] = useState('');
+  const [dateOut, setDateOut] = useState('');
   const [guests, setGuests] = useState(2);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const submit = (e: React.FormEvent) => {
     e.preventDefault();
+    const query = new URLSearchParams({ dateIn, dateOut, guests: String(guests) }).toString();
+    window.location.href = `/rooms?${query}`;
   };
 
   return (
-    <div className="bg-cream border-2 border-brass rounded-lg p-6 shadow-lg">
-      <h3 className="font-heading text-2xl font-semibold text-forest mb-4">
-        Check Availability
-      </h3>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="check-in" className="block text-sm font-medium text-brown mb-1">
-            Check-in
-          </label>
-          <input
-            type="date"
-            id="check-in"
-            value={checkIn}
-            onChange={(e) => setCheckIn(e.target.value)}
-            className="w-full px-4 py-2 border border-brown rounded focus:ring-2 focus:ring-brass focus:border-brass"
-            required
-          />
+    <section id="booking" className="section-sm">
+      <div className="container-wide">
+        <div className="card p-5 md:p-6">
+          <form onSubmit={submit} className="grid sm:grid-cols-4 gap-4 items-end">
+            <div>
+              <label className="block text-sm text-timber/70">Check in</label>
+              <input type="date" required value={dateIn} onChange={e=>setDateIn(e.target.value)} className="mt-1 w-full rounded-lg border border-stone/60 px-3 py-2 bg-white" />
+            </div>
+            <div>
+              <label className="block text-sm text-timber/70">Check out</label>
+              <input type="date" required value={dateOut} onChange={e=>setDateOut(e.target.value)} className="mt-1 w-full rounded-lg border border-stone/60 px-3 py-2 bg-white" />
+            </div>
+            <div>
+              <label className="block text-sm text-timber/70">Guests</label>
+              <input type="number" min={1} value={guests} onChange={e=>setGuests(parseInt(e.target.value || '1',10))} className="mt-1 w-full rounded-lg border border-stone/60 px-3 py-2 bg-white" />
+            </div>
+            <button type="submit" className="btn btn-primary w-full">Check Availability</button>
+          </form>
+          <p className="mt-3 text-xs text-timber/70">Best rate here · Breakfast included</p>
         </div>
-
-        <div>
-          <label htmlFor="check-out" className="block text-sm font-medium text-brown mb-1">
-            Check-out
-          </label>
-          <input
-            type="date"
-            id="check-out"
-            value={checkOut}
-            onChange={(e) => setCheckOut(e.target.value)}
-            className="w-full px-4 py-2 border border-brown rounded focus:ring-2 focus:ring-brass focus:border-brass"
-            required
-          />
-        </div>
-
-        <div>
-          <label htmlFor="guests" className="block text-sm font-medium text-brown mb-1">
-            Guests
-          </label>
-          <select
-            id="guests"
-            value={guests}
-            onChange={(e) => setGuests(Number(e.target.value))}
-            className="w-full px-4 py-2 border border-brown rounded focus:ring-2 focus:ring-brass focus:border-brass"
-          >
-            {[1, 2, 3, 4, 5, 6].map((num) => (
-              <option key={num} value={num}>
-                {num} {num === 1 ? 'Guest' : 'Guests'}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <button type="submit" className="btn-primary w-full">
-          Book Your Stay
-        </button>
-
-        <p className="text-xs text-center text-brown">
-          You will be redirected to our booking partner
-        </p>
-      </form>
-    </div>
+      </div>
+    </section>
   );
 }
