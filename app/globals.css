@@ -97,7 +97,12 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 /* -------------------------
    HERO (dark scrim + glass)
    ------------------------- */
-.hero-wrap { position: relative; }
+.hero-wrap {
+  position: relative;
+  /* NEW: pull the hero down a few pixels to overlap the next section and kill seams */
+  margin-bottom: -4px;
+}
+
 .hero-video {
   position: relative;
   height: calc(100svh - var(--nav-height));
@@ -107,9 +112,10 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 .hero-video video {
   position: absolute;
   left: 0;
-  top: calc(var(--hero-crop) * -1);
+  top: calc(var(--hero-crop) * -1);            /* push video up so any top band is out of view */
   width: 100%;
-  height: calc(100% + var(--hero-crop));
+  /* NEW: extend beyond the container by +16px to avoid bottom letterbox on some devices */
+  height: calc(100% + var(--hero-crop) + 16px);
   object-fit: cover !important;
   object-position: center top;
   transform: translateZ(0) scale(1.06);
