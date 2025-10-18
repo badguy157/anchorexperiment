@@ -11,8 +11,9 @@
   --offwhite: #FAFAF8;
 
   /* Header & hero tuning */
-  --nav-height: 64px;      /* adjust if your navbar is taller/shorter */
-  --hero-overscan: 22px;   /* small overscan to hide thin letterbox lines */
+  --nav-height: 64px;        /* tweak if your navbar height changes */
+  --nav-hide-extra: 12px;     /* extra pixels tucked under the nav */
+  --hero-overscan: 48px;      /* how much we zoom past the edges to bury black lines */
 }
 
 /* Motion prefs */
@@ -42,9 +43,7 @@ body {
 }
 
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
-  @apply font-heading;
-}
+h1, h2, h3, h4, h5, h6 { @apply font-heading; }
 
 /* Layout helpers */
 .section-padding { @apply py-12 md:py-16 px-4 md:px-8; }
@@ -65,9 +64,8 @@ h1, h2, h3, h4, h5, h6 {
 /* ---------------------- */
 
 /*
-  Key bit: we pull the hero "up" by the navbar height so the
-  very top edge (any black sliver) hides under the nav.
-  The equal padding preserves layout spacing below.
+  1) Pull hero up by (nav-height + a few extra px) so any top line hides under the navbar.
+  2) Overscan the video by --hero-overscan so faint top/bottom bars are pushed out of view.
 */
 .hero {
   position: relative;
@@ -79,11 +77,12 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   overflow: hidden;
 
-  margin-top: calc(-1 * var(--nav-height)); /* hide the top under navbar */
-  padding-top: var(--nav-height);           /* keep rest of layout consistent */
+  /* tuck under navbar */
+  margin-top: calc(-1 * (var(--nav-height) + var(--nav-hide-extra)));
+  padding-top: calc(var(--nav-height) + var(--nav-hide-extra));
 }
 
-/* Video fills the hero and overscans slightly to hide letterboxing */
+/* Video fills hero and extends beyond edges to bury letterboxing */
 .video-bleed {
   position: absolute;
   inset: 0;
@@ -92,8 +91,8 @@ h1, h2, h3, h4, h5, h6 {
   object-fit: cover;
   object-position: center;
 
-  /* overscan (top/bottom) to bury any faint lines */
-  top: calc(var(--hero-overscan) * -1);
+  /* overscan */
+  top: calc(-1 * var(--hero-overscan));
   height: calc(100% + (var(--hero-overscan) * 2));
 
   filter: brightness(0.78);
@@ -120,5 +119,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Mobile tweaks */
 @media (max-width: 640px) {
-  :root { --nav-height: 56px; --hero-overscan: 26px; }
+  :root {
+    --nav-height: 56px;
+    --nav-hide-extra: 10px;
+    --hero-overscan: 56px; /* slightly more aggressive on small screens */
+  }
 }
