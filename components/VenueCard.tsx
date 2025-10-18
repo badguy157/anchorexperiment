@@ -1,32 +1,19 @@
-import Link from 'next/link';
-
-type VenueCardProps = {
+type Props = {
   title: string;
-  image: string;   // path in /public, e.g. "/venues/salmons-leap.jpg"
+  image: string;
   blurb: string;
-  href: string;    // link to section or page
+  href: string;
 };
 
-export default function VenueCard({ title, image, blurb, href }: VenueCardProps) {
+export default function VenueCard({ title, image, blurb, href }: Props) {
   return (
     <article className="card overflow-hidden">
-      <div className="aspect-[4/3] w-full overflow-hidden">
-        {/* You can swap to next/image later if you like */}
-        <img
-          src={image}
-          alt={title}
-          className="h-full w-full object-cover"
-          loading="lazy"
-        />
-      </div>
-
+      <img src={image} alt="" className="w-full h-52 object-cover" />
       <div className="p-5">
-        <h3 className="font-display text-xl">{title}</h3>
-        <p className="mt-2 text-sm text-timber/80">{blurb}</p>
+        <h3 className="text-xl font-semibold">{title}</h3>
+        <p className="mt-2 text-timber/80">{blurb}</p>
         <div className="mt-4">
-          <Link href={href} className="btn btn-outline no-underline">
-            Learn more
-          </Link>
+          <a href={href} className="btn btn-contrast no-underline">Learn more</a>
         </div>
       </div>
     </article>

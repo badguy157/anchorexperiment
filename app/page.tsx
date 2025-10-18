@@ -1,12 +1,11 @@
 import HeroMedia from '@/components/HeroMedia';
 import StickyBook from '@/components/StickyBook';
-import Eventstrip from '@/components/Eventstrip'; // matches components/Eventstrip.tsx
+import Eventstrip from '@/components/Eventstrip';
 import Timeline from '@/components/Timeline';
 import BookingWidget from '@/components/BookingWidget';
 import Reviews from '@/components/Reviews';
 import VenueCard from '@/components/VenueCard';
 import RoomCard from '@/components/RoomCard';
-import MapBlock from '@/components/MapBlock';
 
 export default function Home() {
   return (
@@ -17,29 +16,27 @@ export default function Home() {
       <div className="section-sm">
         <div className="container-narrow">
           <div className="card p-6 text-center">
-            <h2 className="text-2xl font-display">Riverside Rooms · Breakfast Included</h2>
-            <p className="mt-2 text-timber/80">
-              Simple, comfortable rooms a short walk from the bridge.
-            </p>
+            <h2 className="text-2xl font-display font-bold">Riverside Rooms · Breakfast Included</h2>
+            <p className="mt-2 text-timber/80">Simple, comfortable rooms a short walk from the bridge.</p>
             <div className="mt-4">
-              <a href="/rooms" className="btn btn-outline no-underline">
-                Browse Rooms
-              </a>
+              {/* Higher-contrast than before */}
+              <a href="/rooms" className="btn btn-cta rounded-2xl no-underline">Browse Rooms</a>
             </div>
           </div>
         </div>
       </div>
 
       <BookingWidget />
+
       <Eventstrip />
 
       <section className="section">
         <div className="container-wide">
-          <h2 className="text-3xl sm:text-4xl font-display">Eat &amp; Drink</h2>
+          <h2 className="text-3xl sm:text-4xl font-display font-extrabold">Eat &amp; Drink</h2>
           <div className="rule my-6"></div>
           <div className="grid md:grid-cols-3 gap-6">
             <VenueCard
-              title="Judge & Barrel Bar"
+              title="Judge &amp; Barrel Bar"
               image="/venues/judge-barrel-bar.jpg"
               blurb="Local ales pulled right; crackling fires in season."
               href="/eat-and-drink#bar"
@@ -62,7 +59,6 @@ export default function Home() {
 
       <Timeline />
       <Reviews />
-      <MapBlock />
     </>
   );
 }
