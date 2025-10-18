@@ -17,14 +17,13 @@ export default function ContactPage() {
 
       <section className="section">
         <div className="container-wide grid gap-6 lg:grid-cols-2">
-          {/* Simple form (static) */}
+          {/* Simple form (static; no client handlers in Server Components) */}
           <div className="card p-6">
             <h2 className="text-2xl font-display">Contact</h2>
-            <p className="mt-2 text-forest/80">
-              We’d love to hear from you.
-            </p>
+            <p className="mt-2 text-forest/80">We’d love to hear from you.</p>
 
-            <form className="mt-6 space-y-4" action="#" onSubmit={(e)=>e.preventDefault()}>
+            {/* remove onSubmit to keep this a Server Component */}
+            <form className="mt-6 space-y-4" action="#">
               <input
                 type="text"
                 placeholder="Your name"
