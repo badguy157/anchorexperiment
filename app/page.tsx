@@ -6,7 +6,7 @@ import { venues, rooms, events, attractions, reviews } from "@/lib/data";
 
 export default function Home() {
   return (
-    <main>
+    <>
       {/* HERO */}
       <section className="hero">
         <video
@@ -15,35 +15,35 @@ export default function Home() {
           muted
           loop
           playsInline
-          poster="/hero-poster.jpg"
-          preload="metadata"
+          preload="auto"
+          /* boomerang logic is baked into the source file;
+             this tag just plays it cleanly */
         >
           <source src="/hero.mp4" type="video/mp4" />
+          <source src="/hero.webm" type="video/webm" />
+          <track kind="captions" />
         </video>
 
-        <div className="hero-overlay px-4 max-w-4xl mx-auto">
-          <h1 className="font-heading text-6xl md:text-7xl font-extrabold mb-4 tracking-tight">
+        <div className="hero-overlay px-4 max-w-4xl">
+          <h1 className="font-heading text-5xl md:text-7xl font-extrabold mb-3 drop-shadow">
             The Anchor Hotel
           </h1>
-          <p className="font-heading text-2xl md:text-3xl mb-3 opacity-90">
-            Riverside Tavern & Inn Since 1422
+          <p className="font-heading text-2xl md:text-3xl mb-3">
+            Riverside Tavern &amp; Inn Since 1422
           </p>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-90">
+          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
             Eat, drink, and stay by the South Tyne in the heart of Haydon Bridge.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/rooms"
-              className="btn-primary text-lg px-8 py-3 rounded-lg shadow-md hover:scale-105 transition-transform"
-            >
+            <Link href="/rooms" className="btn-primary text-lg">
               Check Availability
             </Link>
             <Link
               href="/eat-and-drink"
-              className="btn-secondary text-lg px-8 py-3 rounded-lg bg-offwhite text-forest hover:bg-cream shadow-md hover:scale-105 transition-transform"
+              className="btn-secondary text-lg bg-offwhite text-forest hover:bg-cream"
             >
-              Eat & Drink
+              Eat &amp; Drink
             </Link>
           </div>
         </div>
@@ -67,10 +67,13 @@ export default function Home() {
                 Six Centuries of Welcome
               </h2>
               <div className="space-y-4 text-brown leading-relaxed">
-                <p>For over six centuries, The Anchor has welcomed travelers and locals alike.</p>
                 <p>
-                  Nestled beside the River South Tyne in Haydon Bridge, our inn, tavern, and café offer hearty food,
-                  well-kept drinks, and a restful night’s sleep — all with the charm of a truly historic Northumberland setting.
+                  For over six centuries, The Anchor has welcomed travelers and locals alike.
+                </p>
+                <p>
+                  Nestled beside the River South Tyne in Haydon Bridge, our inn, tavern, and café
+                  offer hearty food, well-kept drinks, and a restful night’s sleep — all with the
+                  charm of a truly historic Northumberland setting.
                 </p>
               </div>
               <Link
@@ -89,7 +92,7 @@ export default function Home() {
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="font-heading text-4xl font-bold text-forest mb-4">
-              Eat & Drink — Our Venues
+              Eat &amp; Drink — Our Venues
             </h2>
             <p className="text-brown text-lg max-w-2xl mx-auto">
               From morning coffee to evening ale, we have the perfect spot for every occasion.
@@ -115,8 +118,12 @@ export default function Home() {
       <section className="section-padding bg-offwhite">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="font-heading text-4xl font-bold text-forest mb-4">Stay With Us</h2>
-            <p className="text-brown text-lg max-w-2xl mx-auto">Four room types — all with breakfast included.</p>
+            <h2 className="font-heading text-4xl font-bold text-forest mb-4">
+              Stay With Us
+            </h2>
+            <p className="text-brown text-lg max-w-2xl mx-auto">
+              Four room types — all with breakfast included.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-4">
@@ -146,7 +153,9 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {events.map((event, i) => (
               <div key={i} className="bg-offwhite rounded-lg p-6 border-2 border-brass shadow">
-                <h3 className="font-heading text-2xl font-semibold text-forest mb-2">{event.title}</h3>
+                <h3 className="font-heading text-2xl font-semibold text-forest mb-2">
+                  {event.title}
+                </h3>
                 <p className="text-brass font-semibold mb-2">{event.time}</p>
                 <p className="text-brown text-sm mb-3">{event.venue}</p>
                 <p className="text-brown">{event.description}</p>
@@ -160,7 +169,9 @@ export default function Home() {
       <section className="section-padding bg-offwhite">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="font-heading text-4xl font-bold text-forest mb-4">Explore Northumberland</h2>
+            <h2 className="font-heading text-4xl font-bold text-forest mb-4">
+              Explore Northumberland
+            </h2>
             <p className="text-brown text-lg">Your perfect base for discovering the region</p>
           </div>
 
@@ -189,7 +200,9 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-8">
-            <Link href="/explore" className="btn-secondary">Explore More</Link>
+            <Link href="/explore" className="btn-secondary">
+              Explore More
+            </Link>
           </div>
         </div>
       </section>
@@ -224,6 +237,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }
