@@ -1,11 +1,12 @@
 import HeroMedia from '@/components/HeroMedia';
 import StickyBook from '@/components/StickyBook';
-import Eventstrip from '@/components/Eventstrip'; // <-- match the actual filename
+import Eventstrip from '@/components/Eventstrip'; // matches components/Eventstrip.tsx
 import Timeline from '@/components/Timeline';
 import BookingWidget from '@/components/BookingWidget';
 import Reviews from '@/components/Reviews';
 import VenueCard from '@/components/VenueCard';
 import RoomCard from '@/components/RoomCard';
+import MapBlock from '@/components/MapBlock';
 
 export default function Home() {
   return (
@@ -17,16 +18,19 @@ export default function Home() {
         <div className="container-narrow">
           <div className="card p-6 text-center">
             <h2 className="text-2xl font-display">Riverside Rooms · Breakfast Included</h2>
-            <p className="mt-2 text-timber/80">Simple, comfortable rooms a short walk from the bridge.</p>
+            <p className="mt-2 text-timber/80">
+              Simple, comfortable rooms a short walk from the bridge.
+            </p>
             <div className="mt-4">
-              <a href="/rooms" className="btn btn-outline no-underline">Browse Rooms</a>
+              <a href="/rooms" className="btn btn-outline no-underline">
+                Browse Rooms
+              </a>
             </div>
           </div>
         </div>
       </div>
 
       <BookingWidget />
-
       <Eventstrip />
 
       <section className="section">
@@ -58,6 +62,7 @@ export default function Home() {
 
       <Timeline />
       <Reviews />
+      <MapBlock />
     </>
   );
 }

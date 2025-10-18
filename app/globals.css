@@ -13,10 +13,20 @@ body { @apply bg-parchment text-timber font-ui antialiased; }
 h1, h2, h3, h4 { @apply font-display tracking-tight; }
 
 /* Links & buttons */
-a { @apply text-forest underline-offset-2 hover:underline; }
+a { @apply underline-offset-2 hover:underline; }
+a { color: #0F3D2E; } /* forest */
 .btn { @apply inline-flex items-center justify-center px-5 py-3 rounded-xl font-semibold transition; }
 .btn-primary { @apply bg-brass text-timber hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-brass/40 shadow; }
 .btn-outline { @apply border border-brass text-forest hover:bg-brass/10; }
+
+/* High-contrast button for dark hero */
+.btn-light {
+  @apply border font-semibold;
+  border-color: rgba(255,255,255,.7);
+  background: rgba(255,255,255,.12);
+  color: #fff;
+}
+.btn-light:hover { background: rgba(255,255,255,.18); }
 
 /* Sections & containers */
 .section     { @apply py-16; }
@@ -28,14 +38,16 @@ a { @apply text-forest underline-offset-2 hover:underline; }
 .card { @apply bg-white/90 rounded-2xl shadow-card ring-1 ring-black/5; }
 
 /* =========================
-   Header / Nav (reverted clean look)
+   Header / Nav (clean)
    ========================= */
 header {
   border-bottom: 1px solid rgba(59,44,34,.15);
   box-shadow: 0 2px 10px rgba(30,24,20,.04);
+  background: #FAF7F0; /* parchment */
 }
 header .h-16 { height: 64px; }
-header nav a { letter-spacing: .01em; }
+header nav a { letter-spacing: .01em; color: rgba(59,44,34,.85); } /* timber */
+header nav a:hover { color: #0F3D2E; } /* forest */
 
 /* active link = subtle brass rope underline */
 header nav a.active,
@@ -55,21 +67,22 @@ header nav a[aria-current="page"]::after {
 }
 
 /* =========================
-   Hero media (hard cover to avoid black bars)
+   Hero media (hide black strip)
    ========================= */
 .hero-wrap { position: relative; }
 .hero-video {
   position: relative;
-  height: calc(100svh - var(--nav-height));
+  height: calc(100svh - var(--nav-height) + 2px); /* +2px to cover any seam */
   overflow: hidden;
+  background: #000; /* prevent flashes */
 }
 .hero-video video {
   position: absolute;
-  inset: 0;
+  inset: -1px 0 0 0;     /* nudge up 1px to hide seam under header */
   width: 100%;
-  height: 100%;
+  height: calc(100% + 1px);
   object-fit: cover !important;
-  transform: translateZ(0) scale(1.08); /* overscan to hide letterboxing */
+  transform: translateZ(0) scale(1.06); /* overscan to hide letterboxing */
 }
 
 .hero-overlay {
@@ -113,6 +126,12 @@ header nav a[aria-current="page"]::after {
 }
 
 /* =========================
-   Footer
+   Footer (darker, contrasting)
    ========================= */
-.footer { @apply bg-stone/30 border-t border-stone/50; }
+.footer {
+  background: #0F3D2E;        /* forest */
+  color: #FAF7F0;             /* off-white */
+  border-top: 0;
+}
+.footer a { color: #FAF7F0; text-decoration: underline; }
+.footer .btn { color: #0F3D2E; } /* if you add buttons in footer, they should be readable */

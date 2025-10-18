@@ -2,13 +2,7 @@ export default function HeroMedia() {
   return (
     <section className="hero-wrap">
       <div className="hero-video">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/hero.jpg"
-        >
+        <video autoPlay muted loop playsInline poster="/hero.jpg">
           <source src="/hero.webm" type="video/webm" />
         </video>
       </div>
@@ -22,8 +16,8 @@ export default function HeroMedia() {
               Rooms with breakfast, honest food & ale, and a village pub that still feels like a village pub.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <a href="/#booking" className="btn btn-primary no-underline">Check Availability</a>
-              <a href="/eat-and-drink" className="btn btn-outline no-underline">See Menus</a>
+              <a href="/#booking" className="btn btn-primary no-underline">Book Your Stay</a>
+              <a href="/eat-and-drink" className="btn btn-light no-underline">See Menus</a>
             </div>
             <ul className="mt-6 flex flex-wrap gap-4 text-white/85 text-sm">
               <li>Best rate here</li>

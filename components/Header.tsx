@@ -32,8 +32,7 @@ export default function Header() {
     <header className={`sticky top-0 z-50 ${scrolled ? 'bg-parchment/90 backdrop-blur supports-[backdrop-filter]:bg-parchment/70' : 'bg-parchment'}`}>
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 no-underline">
-          {/* If /public/logo.png is missing, this <img> just won’t render; that’s OK */}
-          <img src="/logo.png" alt="Anchor Hotel logo" className="h-8 w-8 rounded-full" />
+          <img src="/logo.svg" alt="The Anchor logo" className="h-8 w-auto" />
           <span className="font-display text-xl tracking-tight text-forest">The Anchor</span>
           <span className="ml-2 text-xs uppercase tracking-[0.2em] text-timber/60">Haydon Bridge · 1422</span>
         </Link>
@@ -49,7 +48,7 @@ export default function Header() {
               {l.label}
             </Link>
           ))}
-          <a href="/#booking" className="btn btn-primary no-underline">Check Availability</a>
+          <a href="/#booking" className="btn btn-primary no-underline">Book Your Stay</a>
         </nav>
 
         <button className="md:hidden p-2" onClick={() => setOpen(v => !v)} aria-label="Toggle navigation">
@@ -63,7 +62,7 @@ export default function Header() {
             {links.map(l => (
               <Link key={l.href} href={l.href} className="py-2 text-timber">{l.label}</Link>
             ))}
-            <a href="/#booking" className="btn btn-primary no-underline">Check Availability</a>
+            <a href="/#booking" className="btn btn-primary no-underline">Book Your Stay</a>
           </nav>
         </div>
       )}
