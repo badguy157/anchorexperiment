@@ -150,6 +150,15 @@ export const events: EventItem[] = [
   { title: "Live Football", time: "Matchdays", venue: "Commodore Lounge", description: "Premier League & cup games on the big screen." },
   { title: "Trivia Night", time: "Wednesdays 7:30pm", venue: "Commodore Lounge", description: "Teams up to 6 · Prizes & bar tab." },
   { title: "Friday Karaoke", time: "Fridays 8pm", venue: "Commodore Lounge", description: "Sing your heart out — crowd-pleasers welcome." },
+
+  // NEW
+  {
+    title: "Poker Night",
+    time: "Fridays · 7:30 PM",
+    venue: "Commodore Lounge",
+    description:
+      "Friendly Texas Hold’em with prizes for top hands. Beginners welcome—arrive early to learn the basics.",
+  },
 ];
 
 export const attractions: Attraction[] = [

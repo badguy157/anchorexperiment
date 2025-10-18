@@ -6,7 +6,7 @@ const gallery: { alt: string; src: string }[] = [
   { alt: 'Salmon’s Leap Restaurant', src: '/venues/salmons-leap.jpg' },
   { alt: 'Judge & Barrel Bar', src: '/venues/judge-barrel-bar.jpg' },
   { alt: 'Commodore Lounge', src: '/venues/commodore-lounge.jpg' },
-  { alt: 'Double ensuite', src: '/rooms/double-ensuite-1.jpg' },
+  { alt: 'Double ensuite', src: '/rooms/double-ensuite/double-ensuite-1.jpg' },
   { alt: 'Twin ensuite', src: '/rooms/twin-room-ensuite/twin1.jpg' },
   { alt: 'Family suite', src: '/rooms/family-suite/family1.jpg' },
   { alt: 'Hadrian’s Wall', src: '/explore/hadrians-wall.jpg' },
