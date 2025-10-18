@@ -2,22 +2,29 @@ import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
       colors: {
-        'forest': '#0F3D2E',
-        'brass': '#C6A15B',
-        'cream': '#F7F3EB',
-        'brown': '#3B2C22',
-        'offwhite': '#FAFAF8',
+        forest: '#0F3D2E',
+        brass: '#C6A15B',
+        stone: '#D7CBB3',
+        timber: '#3B2C22',
+        parchment: '#FAF7F0',
       },
       fontFamily: {
-        'heading': ['var(--font-cormorant)', 'serif'],
-        'body': ['var(--font-inter)', 'sans-serif'],
+        display: ['var(--font-cormorant)', 'serif'],
+        ui: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        card: '0 8px 30px rgba(32, 28, 24, 0.08)',
+      },
+      borderRadius: {
+        xl: '0.9rem',
+        '2xl': '1.25rem',
       },
     },
   },
