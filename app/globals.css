@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Theme tokens */
+/* =========================
+   Theme tokens / base
+   ========================= */
 :root { --nav-height: 64px; }
 
 html { scroll-behavior: smooth; }
 body { @apply bg-parchment text-timber font-ui antialiased; }
 
-/* Headings */
-h1,h2,h3,h4 { @apply font-display tracking-tight; }
+h1, h2, h3, h4 { @apply font-display tracking-tight; }
 
 /* Links & buttons */
 a { @apply text-forest underline-offset-2 hover:underline; }
@@ -18,30 +19,44 @@ a { @apply text-forest underline-offset-2 hover:underline; }
 .btn-outline { @apply border border-brass text-forest hover:bg-brass/10; }
 
 /* Sections & containers */
-.section { @apply py-16; }
-.section-sm { @apply py-10; }
+.section     { @apply py-16; }
+.section-sm  { @apply py-10; }
 .container-narrow { @apply max-w-5xl mx-auto px-4; }
 .container-wide   { @apply max-w-7xl mx-auto px-4; }
 
 /* Cards */
 .card { @apply bg-white/90 rounded-2xl shadow-card ring-1 ring-black/5; }
 
-/* Header polish */
+/* =========================
+   Header / Nav (reverted clean look)
+   ========================= */
 header {
   border-bottom: 1px solid rgba(59,44,34,.15);
-  box-shadow: 0 2px 10px rgba(30, 24, 20, 0.04);
+  box-shadow: 0 2px 10px rgba(30,24,20,.04);
 }
-header nav a { letter-spacing: 0.01em; }
-header nav a[aria-current="page"], header nav a.active {
-  position: relative; font-weight: 600; color: #0F3D2E;
+header .h-16 { height: 64px; }
+header nav a { letter-spacing: .01em; }
+
+/* active link = subtle brass rope underline */
+header nav a.active,
+header nav a[aria-current="page"] {
+  position: relative;
+  font-weight: 600;
+  color: #0F3D2E; /* forest */
 }
-header nav a[aria-current="page"]::after, header nav a.active::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: -10px; height: 2px;
-  background: linear-gradient(90deg,#C6A15B, rgba(198,161,91,.15)); border-radius: 999px;
+header nav a.active::after,
+header nav a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -10px;
+  height: 2px;
+  background: linear-gradient(90deg,#C6A15B, rgba(198,161,91,.15));
+  border-radius: 999px;
 }
 
-/* Hero media */
-/* Hero media (hard cover to avoid black bars) */
+/* =========================
+   Hero media (hard cover to avoid black bars)
+   ========================= */
 .hero-wrap { position: relative; }
 .hero-video {
   position: relative;
@@ -59,7 +74,12 @@ header nav a[aria-current="page"]::after, header nav a.active::after {
 
 .hero-overlay {
   @apply absolute inset-0 flex items-center;
-  background: linear-gradient(180deg, rgba(16,16,14,0.55) 0%, rgba(16,16,14,0.28) 42%, rgba(16,16,14,0.40) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(16,16,14,0.55) 0%,
+    rgba(16,16,14,0.28) 42%,
+    rgba(16,16,14,0.40) 100%
+  );
 }
 .hero-inner { @apply container-wide; }
 .hero-kicker { @apply uppercase tracking-[0.2em] text-stone/80 text-xs; }
@@ -72,17 +92,27 @@ header nav a[aria-current="page"]::after, header nav a.active::after {
 }
 .hero-sub { @apply text-white/90 text-lg sm:text-xl max-w-[48ch]; }
 
-/* Sticky booking CTA (mobile) */
+/* =========================
+   Sticky mobile booking CTA
+   ========================= */
 .sticky-book { @apply fixed bottom-4 inset-x-4 z-50 md:hidden; }
 .sticky-book a { @apply btn btn-primary w-full text-center; }
 
-/* Rope divider */
+/* =========================
+   Divider
+   ========================= */
 .rule {
   background-image: repeating-linear-gradient(
-    90deg, rgba(60,44,34,.28) 0 10px, rgba(60,44,34,.12) 10px 20px
+    90deg,
+    rgba(60,44,34,.28) 0 10px,
+    rgba(60,44,34,.12) 10px 20px
   );
-  height: 2px; border-radius: 999px; opacity: .9;
+  height: 2px;
+  border-radius: 999px;
+  opacity: .9;
 }
 
-/* Footer */
+/* =========================
+   Footer
+   ========================= */
 .footer { @apply bg-stone/30 border-t border-stone/50; }

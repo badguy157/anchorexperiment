@@ -1,12 +1,11 @@
-import BrandLogo from './BrandLogo';
-
 export default function Footer(){
   return (
     <footer className="footer mt-16">
       <div className="container-wide py-10 grid gap-8 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-2">
-            <BrandLogo mark="bridge-river" variant="dark" size={26} showWordmark />
+            <img src="/logo.png" alt="" className="h-8 w-8 rounded-full" />
+            <span className="font-display text-xl text-forest">The Anchor</span>
           </div>
           <p className="mt-3 text-sm text-timber/80">
             Haydon Bridge, Northumberland · On the River South Tyne.
