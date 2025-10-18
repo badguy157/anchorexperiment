@@ -12,8 +12,8 @@
 
   /* Header & hero tuning */
   --nav-height: 64px;        /* tweak if your navbar height changes */
-  --nav-hide-extra: 12px;     /* extra pixels tucked under the nav */
-  --hero-overscan: 48px;      /* how much we zoom past the edges to bury black lines */
+  --nav-hide-extra: 20px;     /* extra pixels tucked under the nav (was 12) */
+  --hero-overscan: 72px;      /* zoom past edges to bury letterbox (was 48) */
 }
 
 /* Motion prefs */
@@ -64,8 +64,10 @@ h1, h2, h3, h4, h5, h6 { @apply font-heading; }
 /* ---------------------- */
 
 /*
-  1) Pull hero up by (nav-height + a few extra px) so any top line hides under the navbar.
-  2) Overscan the video by --hero-overscan so faint top/bottom bars are pushed out of view.
+  Strategy:
+  1) Pull hero up by (nav-height + a bit extra) so any top line hides under navbar.
+  2) Overscan the video so faint bars at top/bottom are pushed out of view.
+  3) A tiny translateY to dodge sub-pixel hairlines on some GPUs.
 */
 .hero {
   position: relative;
@@ -79,7 +81,7 @@ h1, h2, h3, h4, h5, h6 { @apply font-heading; }
 
   /* tuck under navbar */
   margin-top: calc(-1 * (var(--nav-height) + var(--nav-hide-extra)));
-  padding-top: calc(var(--nav-height) + var(--nav-hide-extra));
+  padding-top: calc(var(--nav-height) + var(--nav-hide-extra)));
 }
 
 /* Video fills hero and extends beyond edges to bury letterboxing */
@@ -91,9 +93,12 @@ h1, h2, h3, h4, h5, h6 { @apply font-heading; }
   object-fit: cover;
   object-position: center;
 
-  /* overscan */
+  /* overscan to kill top/bottom bars */
   top: calc(-1 * var(--hero-overscan));
   height: calc(100% + (var(--hero-overscan) * 2));
+
+  /* tiny nudge to avoid subpixel hairline on some devices */
+  transform: translateY(-0.5px);
 
   filter: brightness(0.78);
 }
@@ -121,7 +126,7 @@ h1, h2, h3, h4, h5, h6 { @apply font-heading; }
 @media (max-width: 640px) {
   :root {
     --nav-height: 56px;
-    --nav-hide-extra: 10px;
-    --hero-overscan: 56px; /* slightly more aggressive on small screens */
+    --nav-hide-extra: 18px;
+    --hero-overscan: 80px; /* a bit more on small screens */
   }
 }
