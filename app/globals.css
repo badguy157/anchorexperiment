@@ -197,3 +197,14 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
   box-shadow: 0 2px 0 rgba(0,0,0,.08), 0 8px 18px rgba(198,161,91,.25);
 }
 .room-cta:hover{ filter: brightness(0.98); transform: translateY(-1px); }
+
+/* --- Footer polish and link visibility --- */
+.site-footer .footer-heading {
+  @apply font-display font-semibold tracking-wide text-offwhite;
+}
+.site-footer .link {
+  @apply text-offwhite/95 underline-offset-2 hover:underline;
+}
+.site-footer .social {
+  @apply inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-offwhite transition;
+}

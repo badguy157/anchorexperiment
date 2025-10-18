@@ -1,62 +1,71 @@
-// app/contact/page.tsx
-export const metadata = { title: 'Contact – The Anchor Hotel' };
+import HeroImage from '@/components/HeroImage';
+
+export const metadata = {
+  title: 'Contact – The Anchor Hotel',
+  description:
+    'How to reach The Anchor Hotel in Haydon Bridge, Northumberland.',
+};
 
 export default function ContactPage() {
   return (
     <>
-      <section className="relative h-[46vh] min-h-[320px]">
-        <img
-          src="/venues/anchor-hero.jpg"
-          alt="The Anchor Hotel"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/10 to-transparent" />
-      </section>
+      <HeroImage
+        src="/venues/anchor-hero.jpg"
+        alt="The Anchor Hotel beside the South Tyne"
+        height={420}
+      />
 
       <section className="section">
-        <div className="container-wide grid md:grid-cols-2 gap-6">
-          {/* Form column (static example to keep SSG happy) */}
+        <div className="container-wide grid gap-6 lg:grid-cols-2">
+          {/* Simple form (static) */}
           <div className="card p-6">
-            <h1 className="font-display text-2xl sm:text-3xl font-semibold">Contact</h1>
-            <p className="mt-2 text-timber/85">We’d love to hear from you.</p>
-            <form className="mt-5 space-y-4">
-              <label className="block">
-                <span className="text-sm">Name</span>
-                <input className="input mt-1 w-full" placeholder="Your name" />
-              </label>
-              <label className="block">
-                <span className="text-sm">Email</span>
-                <input className="input mt-1 w-full" placeholder="you@example.com" />
-              </label>
-              <label className="block">
-                <span className="text-sm">Message</span>
-                <textarea className="input mt-1 w-full h-32" placeholder="How can we help?" />
-              </label>
-              <button type="button" className="btn btn-primary">Send</button>
+            <h2 className="text-2xl font-display">Contact</h2>
+            <p className="mt-2 text-forest/80">
+              We’d love to hear from you.
+            </p>
+
+            <form className="mt-6 space-y-4" action="#" onSubmit={(e)=>e.preventDefault()}>
+              <input
+                type="text"
+                placeholder="Your name"
+                className="w-full rounded-lg border border-stone/30 px-3 py-2 bg-white"
+              />
+              <input
+                type="email"
+                placeholder="you@example.com"
+                className="w-full rounded-lg border border-stone/30 px-3 py-2 bg-white"
+              />
+              <textarea
+                placeholder="How can we help?"
+                className="min-h-[140px] w-full rounded-lg border border-stone/30 px-3 py-2 bg-white"
+              />
+              <button className="btn btn-primary" type="submit">
+                Send
+              </button>
             </form>
           </div>
 
-          {/* Details column */}
-          <aside className="card p-6">
-            <h2 className="font-display text-xl font-semibold">Hotel details</h2>
+          {/* Hotel details */}
+          <div className="card p-6">
+            <h3 className="text-xl font-semibold">The Anchor Hotel</h3>
             <p className="mt-2">
-              The Anchor Hotel<br />
-              Haydon Bridge<br />
-              Northumberland<br />
+              Haydon Bridge
+              <br />
+              Northumberland
+              <br />
               NE47 6AB
             </p>
-            <p className="mt-3">
-              Tel:{' '}
-              <a className="link" href="tel:+441234567890">
-                01234 567 890
-              </a>
+
+            <p className="mt-4">
+              <span className="font-medium">Tel:</span>{' '}
+              <a className="link" href="tel:+441234567890">01234 567 890</a>
               <br />
-              Email:{' '}
+              <span className="font-medium">Email:</span>{' '}
               <a className="link" href="mailto:info@theanchorbridge.co.uk">
                 info@theanchorbridge.co.uk
               </a>
             </p>
-          </aside>
+          </div>
         </div>
       </section>
     </>
