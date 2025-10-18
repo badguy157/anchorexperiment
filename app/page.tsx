@@ -12,17 +12,15 @@ export default function Home() {
 {/* HERO (video, cropped + polished copy/buttons) */}
 <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
   <video
-    className="absolute inset-0 h-full w-full object-cover [object-position:50%_60%]"
-    autoPlay
-    muted
-    loop
-    playsInline
-    poster="/hero-poster.jpg"
-    preload="metadata"
-  >
-    <source src="/hero-loop.webm" type="video/webm" />
-    <source src="/hero-loop.mp4" type="video/mp4" />
-  </video>
+  className="absolute inset-0 h-full w-full object-cover scale-[1.02] -translate-y-[2px] will-change-transform"
+  autoPlay muted loop playsInline
+  poster="/hero-poster.jpg" preload="metadata"
+>
+  {/* If you created hero.webm, keep this source first */}
+  <source src="/hero.webm" type="video/webm" />
+  <source src="/hero.mp4" type="video/mp4" />
+</video>
+
 
   <div className="relative z-10 text-center text-offwhite px-4 max-w-4xl drop-shadow-lg">
     <h1 className="font-heading text-6xl md:text-7xl font-extrabold mb-4 tracking-tight">The Anchor Hotel</h1>
