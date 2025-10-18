@@ -30,13 +30,18 @@ export default function Header() {
 
   return (
     <header className={`sticky top-0 z-50 ${scrolled ? 'bg-parchment/90 backdrop-blur supports-[backdrop-filter]:bg-parchment/70' : 'bg-parchment'}`}>
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 no-underline">
-        <img src="/logo.svg" alt="The Anchor logo" className="h-8 w-auto" />
-          <span className="font-display text-xl tracking-tight text-forest">The Anchor</span>
-          <span className="ml-2 text-xs uppercase tracking-[0.2em] text-timber/60">Haydon Bridge · 1422</span>
+      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center gap-4">
+        {/* Brand (flex-1 so it never collides with the nav) */}
+        <Link href="/" className="flex-1 min-w-0 flex items-center gap-2 no-underline">
+          <img src="/logo.svg" alt="The Anchor logo" className="h-8 w-auto shrink-0" />
+          <span className="font-display text-xl tracking-tight text-forest shrink-0">The Anchor</span>
+          {/* Show the long bit only when there’s room */}
+          <span className="hidden lg:inline-block text-xs uppercase tracking-[0.2em] text-timber/60 whitespace-nowrap ml-2">
+            Haydon Bridge · 1422
+          </span>
         </Link>
 
+        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6">
           {links.map(l => (
             <Link
@@ -51,11 +56,13 @@ export default function Header() {
           <a href="/#booking" className="btn btn-primary no-underline">Book Your Stay</a>
         </nav>
 
+        {/* Mobile toggle */}
         <button className="md:hidden p-2" onClick={() => setOpen(v => !v)} aria-label="Toggle navigation">
           <span>☰</span>
         </button>
       </div>
 
+      {/* Mobile drawer */}
       {open && (
         <div className="md:hidden border-t border-stone/60 bg-parchment">
           <nav className="px-4 py-3 flex flex-col gap-2">
