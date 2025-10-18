@@ -65,3 +65,16 @@ h1, h2, h3, h4, h5, h6 {
 .img-4-3  { @apply relative aspect-[4/3]; }   /* good for room photos */
 .img-16-9 { @apply relative aspect-[16/9]; }  /* good for venue/hero thumbs */
 .img-cover { @apply object-cover; }
+
+/* === Hero Video Fix: Hide Black Borders === */
+.video-bleed {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  width: calc(100% + 12px);
+  height: calc(100% + 12px);
+  object-fit: cover;
+  object-position: center center;
+  transform: translateZ(0);
+  will-change: transform;
+}
