@@ -6,7 +6,6 @@ import Timeline from '@/components/Timeline';
 import BookingWidget from '@/components/BookingWidget';
 import Reviews from '@/components/Reviews';
 import VenueCard from '@/components/VenueCard';
-import RoomCard from '@/components/RoomCard';
 
 export default function Home() {
   return (
@@ -14,34 +13,38 @@ export default function Home() {
       <HeroMedia />
       <StickyBook />
 
-      {/* PROMO / ROOMS TEASER */}
-      <div className="section-sm">
+      {/* Rooms promo */}
+      <section className="section-sm">
         <div className="container-narrow">
           <div className="card p-6 text-center">
-            <h2 className="font-display font-semibold text-3xl sm:text-4xl">
+            <h2 className="text-2xl sm:text-3xl font-display font-semibold">
               Riverside Rooms · Breakfast Included
             </h2>
-            <p className="mt-2 text-timber/80 text-base sm:text-lg">
+            <p className="mt-2 text-timber/80">
               Simple, comfortable rooms a short walk from the bridge.
             </p>
             <div className="mt-5">
+              {/* solid button for contrast */}
               <a href="/rooms" className="btn btn-primary no-underline">
                 Browse Rooms
               </a>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <BookingWidget />
 
       <Eventstrip />
 
-      {/* EAT & DRINK */}
+      {/* Eat & Drink */}
       <section className="section">
         <div className="container-wide">
-          <h2 className="text-3xl sm:text-4xl font-display font-semibold">Eat &amp; Drink</h2>
+          <h2 className="text-3xl sm:text-4xl font-display font-semibold">
+            Eat &amp; Drink
+          </h2>
           <div className="rule my-6"></div>
+
           <div className="grid md:grid-cols-3 gap-6">
             <VenueCard
               title="Judge & Barrel Bar"
@@ -65,71 +68,66 @@ export default function Home() {
         </div>
       </section>
 
-      <Timeline />
-      <Reviews />
-
-      {/* FIND US (Map) */}
+      {/* Timeline & reviews */}
       <section className="section">
         <div className="container-wide">
-          <h2 className="font-display text-3xl sm:text-4xl font-semibold">Find Us</h2>
-          <div className="rule my-6" />
+          <h2 className="text-2xl sm:text-3xl font-display font-semibold">
+            From Court &amp; Gaol to Riverside Inn
+          </h2>
+          <div className="rule my-6"></div>
+          <Timeline />
+        </div>
+      </section>
 
-          <div className="grid gap-6 lg:grid-cols-3">
-            {/* Map */}
-            <div className="lg:col-span-2">
-              <div className="card overflow-hidden">
-                <iframe
-                  title="Anchor Hotel Location"
-                  width="100%"
-                  height="420"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="block"
-                  src="https://www.google.com/maps?q=Anchor+Hotel+Haydon+Bridge&output=embed"
-                />
-              </div>
-            </div>
+      <Reviews />
 
-            {/* Address & Single CTA */}
-            <div className="lg:col-span-1">
-              <div className="card p-6 h-full">
-                <h3 className="text-xl font-semibold">The Anchor Hotel</h3>
-                <p className="mt-3 text-timber/80">
-                  Church St<br />
-                  Haydon Bridge<br />
-                  Northumberland<br />
-                  NE47 6AB
-                </p>
-
-                <div className="mt-4 space-y-2">
-                  <div>
-                    <span className="font-semibold">Tel: </span>
-                    <a href="tel:+441234567890" className="underline">
-                      01234 567 890
-                    </a>
-                  </div>
-                  <div>
-                    <span className="font-semibold">Email: </span>
-                    <a href="mailto:info@theanchorbridge.co.uk" className="underline">
-                      info@theanchorbridge.co.uk
-                    </a>
-                  </div>
-                </div>
-
-                {/* One high-contrast CTA only */}
-                <div className="mt-6">
-                  <a
-                    href="https://maps.google.com/?q=Anchor+Hotel+Haydon+Bridge"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn btn-primary no-underline w-full sm:w-auto"
-                  >
-                    Get directions
-                  </a>
-                </div>
-              </div>
-            </div>
+      {/* Find Us / Map */}
+      <section id="find-us" className="section">
+        <div className="container-wide grid md:grid-cols-5 gap-6">
+          <div className="md:col-span-3">
+            <iframe
+              title="Google map to The Anchor Hotel"
+              className="w-full h-[420px] rounded-xl shadow-md border border-stone/30"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d899.0660375859722!2d-2.24661!3d54.9733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487de6b37b2f2e63%3A0x8b6a0b5b8e3f2cc5!2sAnchor%20Hotel%2C%20Haydon%20Bridge!5e0!3m2!1sen!2suk!4v0000000000"
+            />
           </div>
+
+          <aside className="md:col-span-2 card p-6">
+            <h3 className="font-display text-xl font-semibold">The Anchor Hotel</h3>
+            <p className="mt-2 text-sm text-timber/85">
+              Church St<br />
+              Haydon Bridge<br />
+              Northumberland<br />
+              NE47 6AB
+            </p>
+
+            <p className="mt-4">
+              Tel:{' '}
+              <a className="link" href="tel:+441234567890">
+                01234 567 890
+              </a>
+              <br />
+              Email:{' '}
+              <a className="link" href="mailto:info@theanchorbridge.co.uk">
+                info@theanchorbridge.co.uk
+              </a>
+            </p>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              {/* HIGH CONTRAST primary button */}
+              <a
+                className="btn btn-primary no-underline"
+                target="_blank"
+                rel="noreferrer"
+                href="https://maps.google.com/?q=Anchor+Hotel+Haydon+Bridge"
+              >
+                Get directions
+              </a>
+              {/* Contact button removed on purpose (redundant) */}
+            </div>
+          </aside>
         </div>
       </section>
     </>
