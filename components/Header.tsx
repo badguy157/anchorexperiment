@@ -32,7 +32,7 @@ export default function Header() {
     <header className={`sticky top-0 z-50 ${scrolled ? 'bg-parchment/90 backdrop-blur supports-[backdrop-filter]:bg-parchment/70' : 'bg-parchment'}`}>
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 no-underline">
-          <img src="/logo.svg" alt="The Anchor logo" className="h-8 w-auto" />
+        <img src="/logo.svg" alt="The Anchor logo" className="h-8 w-auto" />
           <span className="font-display text-xl tracking-tight text-forest">The Anchor</span>
           <span className="ml-2 text-xs uppercase tracking-[0.2em] text-timber/60">Haydon Bridge · 1422</span>
         </Link>

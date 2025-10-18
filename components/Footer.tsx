@@ -4,7 +4,7 @@ export default function Footer(){
       <div className="container-wide py-10 grid gap-8 md:grid-cols-4">
         <div>
           <div className="flex items-center gap-2">
-            <img src="/logo.png" alt="" className="h-8 w-8 rounded-full" />
+          <img src="/logo.svg" alt="The Anchor logo" className="h-8 w-auto" />
             <span className="font-display text-xl text-forest">The Anchor</span>
           </div>
           <p className="mt-3 text-sm text-timber/80">
