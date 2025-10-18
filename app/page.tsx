@@ -90,7 +90,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Address & Actions */}
+            {/* Address & Single CTA */}
             <div className="lg:col-span-1">
               <div className="card p-6 h-full">
                 <h3 className="text-xl font-semibold">The Anchor Hotel</h3>
@@ -116,18 +116,15 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                {/* One high-contrast CTA only */}
+                <div className="mt-6">
                   <a
                     href="https://maps.google.com/?q=Anchor+Hotel+Haydon+Bridge"
                     target="_blank"
                     rel="noreferrer"
-                    className="btn btn-outline no-underline"
+                    className="btn btn-primary no-underline w-full sm:w-auto"
                   >
                     Get directions
-                  </a>
-                  {/* Filled, high-contrast CTA as requested */}
-                  <a href="/contact" className="btn btn-primary no-underline">
-                    Contact us
                   </a>
                 </div>
               </div>

@@ -1,81 +1,50 @@
 // app/contact/page.tsx
-'use client';
-
-import React from 'react';
+export const metadata = { title: 'Contact – The Anchor' };
 
 export default function ContactPage() {
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    alert('Thanks! This demo form does not send yet.');
-  };
-
   return (
     <>
-      <section
-        className="page-hero"
-        style={{
-          backgroundImage: "url('/anchor-hero.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="page-hero-inner">
-          <h1>Contact</h1>
-          <p className="mt-3">We’d love to hear from you.</p>
+      {/* Hero image only */}
+      <section className="relative">
+        <div className="aspect-[16/6] w-full overflow-hidden">
+          <img
+            src="/venues/anchor-hero.jpg"
+            alt="The Anchor Hotel exterior"
+            className="h-full w-full object-cover"
+          />
         </div>
       </section>
 
-      <section className="page-section">
-        <div className="grid gap-6 md:grid-cols-2">
-          <div className="page-card">
-            <h3 className="text-xl font-semibold">Send us a message</h3>
-            <form className="mt-4 space-y-4" onSubmit={onSubmit}>
-              <div>
-                <label className="block text-sm font-medium text-timber/80">Name</label>
-                <input
-                  className="mt-1 w-full rounded-lg border border-stone/60 bg-white/95 px-3 py-2"
-                  placeholder="Your name"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-timber/80">Email</label>
-                <input
-                  type="email"
-                  className="mt-1 w-full rounded-lg border border-stone/60 bg-white/95 px-3 py-2"
-                  placeholder="you@example.com"
-                  required
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-timber/80">Message</label>
-                <textarea
-                  rows={6}
-                  className="mt-1 w-full rounded-lg border border-stone/60 bg-white/95 px-3 py-2"
-                  placeholder="How can we help?"
-                  required
-                />
-              </div>
-              <button className="btn btn-cta rounded-2xl" type="submit">
-                Send
-              </button>
-            </form>
-          </div>
+      {/* Content */}
+      <section className="section">
+        <div className="container-wide">
+          <h1 className="font-display text-4xl sm:text-5xl font-semibold">Contact</h1>
+          <div className="rule my-6" />
 
-          <div className="page-card">
-            <h3 className="text-xl font-semibold">Hotel details</h3>
-            <div className="mt-4 space-y-2 text-timber/80">
-              <p className="font-semibold text-timber">The Anchor Hotel</p>
-              <p>
+          <div className="grid gap-6 lg:grid-cols-2">
+            <form className="card p-6">
+              <h2 className="text-xl font-semibold">Send us a message</h2>
+              <div className="mt-4 space-y-4">
+                <input className="input" placeholder="Your name" />
+                <input className="input" placeholder="you@example.com" type="email" />
+                <textarea className="textarea" placeholder="How can we help?" rows={6} />
+                <button type="submit" className="btn btn-primary w-fit">Send</button>
+              </div>
+            </form>
+
+            <div className="card p-6">
+              <h2 className="text-xl font-semibold">Hotel details</h2>
+              <p className="mt-3">
+                The Anchor Hotel<br />
                 Haydon Bridge<br />
                 Northumberland<br />
                 NE47 6AB
               </p>
-              <p>
+              <p className="mt-3">
                 <span className="font-semibold">Tel:</span>{' '}
                 <a href="tel:+441234567890" className="underline">01234 567 890</a>
               </p>
-              <p>
+              <p className="mt-2">
                 <span className="font-semibold">Email:</span>{' '}
                 <a href="mailto:info@theanchorbridge.co.uk" className="underline">
                   info@theanchorbridge.co.uk
