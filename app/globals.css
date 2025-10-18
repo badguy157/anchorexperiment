@@ -6,13 +6,12 @@
    Theme tokens / base
    ========================= */
 :root {
-  --nav-height: 64px;     /* sticky header height */
-  --hero-crop: 260px;     /* BIG crop from TOP of video to hide any black band */
+  --nav-height: 64px;            /* sticky header height */
+  --hero-crop: 200px;            /* crops top of video so no dark band ever shows */
 }
 
-/* On smaller screens we still crop a lot, just a bit less */
 @media (max-width: 1024px) {
-  :root { --hero-crop: 200px; }
+  :root { --hero-crop: 160px; }
 }
 
 html { scroll-behavior: smooth; }
@@ -26,14 +25,13 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 .btn-primary { @apply bg-brass text-timber hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-brass/40 shadow; }
 .btn-outline { @apply border border-brass text-forest hover:bg-brass/10; }
 
-/* High-contrast button for dark hero */
 .btn-light {
   @apply border font-semibold;
-  border-color: rgba(255,255,255,.7);
-  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.75);
+  background: rgba(255,255,255,.14);
   color: #fff;
 }
-.btn-light:hover { background: rgba(255,255,255,.18); }
+.btn-light:hover { background: rgba(255,255,255,.20); }
 
 /* Sections & containers */
 .section     { @apply py-16; }
@@ -44,9 +42,9 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 /* Cards */
 .card { @apply bg-white/90 rounded-2xl shadow-card ring-1 ring-black/5; }
 
-/* =========================
+/* -------------------------
    Header / Nav (seam-proof)
-   ========================= */
+   ------------------------- */
 .site-header {
   position: sticky;
   top: 0;
@@ -54,8 +52,6 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
   border-bottom: 0 !important;   /* kill physical border to prevent seams */
   box-shadow: 0 2px 10px rgba(30,24,20,0.04);
 }
-
-/* Draw the brass “rope” INSIDE the header so it can never separate from hero */
 .site-header::after {
   content: "";
   position: absolute;
@@ -64,96 +60,123 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
   background: linear-gradient(90deg,#C6A15B, rgba(198,161,91,.15));
   pointer-events: none;
 }
-
 .site-header .h-16 { height: var(--nav-height); }
-.site-header nav a { letter-spacing: .01em; color: rgba(59,44,34,.92); } /* timber */
-.site-header nav a:hover { color: #0F3D2E; } /* forest */
-
-/* active link underline (kept) */
+.site-header nav a { letter-spacing: .01em; color: rgba(59,44,34,.92); }
+.site-header nav a:hover { color: #0F3D2E; }
 .site-header nav a.active,
 .site-header nav a[aria-current="page"] {
-  position: relative;
-  font-weight: 600;
-  color: #0F3D2E;
+  position: relative; font-weight: 600; color: #0F3D2E;
 }
 .site-header nav a.active::after,
 .site-header nav a[aria-current="page"]::after {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: -10px;
-  height: 2px;
-  background: linear-gradient(90deg,#C6A15B, rgba(198,161,91,.15));
-  border-radius: 999px;
+  content: ""; position: absolute; left:0; right:0; bottom:-10px; height:2px;
+  background: linear-gradient(90deg,#C6A15B, rgba(198,161,91,.15)); border-radius: 999px;
 }
 
-/* =========================
-   HERO (crop the top HARD, zero chance of a seam)
-   ========================= */
+/* -------------------------
+   HERO (dark scrim + glass)
+   ------------------------- */
 .hero-wrap { position: relative; }
 .hero-video {
   position: relative;
   height: calc(100svh - var(--nav-height));
   overflow: hidden;
-  background: transparent; /* never show black behind video */
+  background: transparent;
 }
 .hero-video video {
   position: absolute;
   left: 0;
-  top: calc(var(--hero-crop) * -1);         /* shove video upward aggressively */
+  top: calc(var(--hero-crop) * -1);            /* push video up so any top band is out of view */
   width: 100%;
-  height: calc(100% + var(--hero-crop));    /* extend so the bottom stays covered */
+  height: calc(100% + var(--hero-crop));
   object-fit: cover !important;
-  object-position: center top;              /* prefer upper composition */
-  transform: translateZ(0) scale(1.08);     /* overscan to kill letterboxing */
+  object-position: center top;
+  transform: translateZ(0) scale(1.06);
 }
 
-.hero-overlay {
-  @apply absolute inset-0 flex items-center;
-  background: linear-gradient(
-    180deg,
-    rgba(16,16,14,0.55) 0%,
-    rgba(16,16,14,0.28) 42%,
-    rgba(16,16,14,0.40) 100%
-  );
+.hero-overlay { @apply absolute inset-0 flex items-center; }
+.hero-overlay::before{
+  /* stronger scrim than before for readability under any frame */
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(15,15,12,.62) 0%, rgba(15,15,12,.38) 42%, rgba(15,15,12,.50) 100%);
 }
+
+/* subtle “glass” panel behind the hero copy */
+.glass-panel {
+  background: linear-gradient(180deg, rgba(15,15,12,.38), rgba(15,15,12,.24));
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(3.5px);
+  -webkit-backdrop-filter: blur(3.5px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.25);
+}
+
 .hero-inner { @apply container-wide; }
-.hero-kicker { @apply uppercase tracking-[0.2em] text-stone/80 text-xs; }
+.hero-kicker { @apply uppercase tracking-[0.2em] text-white/85 text-xs; }
 .hero-title {
   @apply text-white font-display;
-  font-size: clamp(2.2rem, 4vw + 1rem, 4rem);
+  font-size: clamp(2.4rem, 4vw + 1rem, 4.2rem);
   line-height: 1.05;
-  text-shadow: 0 8px 32px rgba(0,0,0,.35), 0 1px 0 rgba(0,0,0,.25);
+  text-shadow: 0 10px 36px rgba(0,0,0,.55), 0 1px 0 rgba(0,0,0,.35);
   letter-spacing: -0.01em;
 }
-.hero-sub { @apply text-white/90 text-lg sm:text-xl max-w-[48ch]; }
+.hero-sub { @apply text-white/95 text-lg sm:text-xl max-w-[54ch]; }
 
-/* =========================
+/* the “Best rate / Breakfast / Hadrian’s Wall” badges */
+.hero-badges { @apply mt-4 flex flex-wrap gap-2; }
+.hero-badge {
+  @apply text-white/95 text-[13px] px-3 py-1 rounded-full;
+  background: rgba(15,15,12,.35);
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+/* -------------------------
    Sticky mobile booking CTA
-   ========================= */
+   ------------------------- */
 .sticky-book { @apply fixed bottom-4 inset-x-4 z-50 md:hidden; }
 .sticky-book a { @apply btn btn-primary w-full text-center; }
 
-/* =========================
+/* -------------------------
    Divider
-   ========================= */
+   ------------------------- */
 .rule {
   background-image: repeating-linear-gradient(
     90deg,
     rgba(60,44,34,.28) 0 10px,
     rgba(60,44,34,.12) 10px 20px
   );
-  height: 2px;
-  border-radius: 999px;
-  opacity: .9;
+  height: 2px; border-radius: 999px; opacity: .9;
 }
 
-/* =========================
-   Footer (contrasting)
-   ========================= */
-.footer {
-  background: #0F3D2E;        /* forest */
-  color: #FAF7F0;             /* off-white */
-  border-top: 0;
+/* -------------------------
+   Footer (HIGH CONTRAST)
+   ------------------------- */
+.footer { background:#0F3D2E; color:#F8FAF6; border-top:0; }
+.footer h3 { @apply text-offwhite font-semibold; }
+.footer p, .footer li { color: rgba(248,250,246,.92); }
+.footer a { color: #F8FAF6; text-decoration: underline; }
+.footer .meta { color: rgba(248,250,246,.72); }
+.footer .divider { border-top: 1px solid rgba(248,250,246,.22); }
+
+/* -------------------------
+   Page hero (Story, etc.)
+   ------------------------- */
+.page-hero {
+  position:relative;
+  min-height: 44svh;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid rgba(0,0,0,.08);
 }
-.footer a { color: #FAF7F0; text-decoration: underline; }
-.footer .btn { color: #0F3D2E; }
+.page-hero::before {
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(15,15,12,.62) 0%, rgba(15,15,12,.40) 60%, rgba(15,15,12,.18) 100%);
+}
+.page-hero-inner { @apply container-wide relative py-20; }
+.page-hero h1 { @apply text-white text-4xl sm:text-5xl font-display; text-shadow: 0 8px 28px rgba(0,0,0,.5); }
+.page-hero p  { @apply text-white/90 text-lg max-w-3xl; }
+
+.page-section { @apply container-wide py-12; }
+.page-card    { @apply card p-6; }
