@@ -1,68 +1,108 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
+import { useState } from 'react';
 
-export type RoomCardProps = {
-  id: string;
-  name: string;
-  price: string;
-  image: string;
-  amenities: string[];
-  description: string;
+type Props = {
+  title: string;
+  desc: string;
+  href: string;          // booking / availability link
+  priceFrom?: string;    // e.g. "£95 / night"
+  image?: string;        // single image (backwards compatible)
+  images?: string[];     // multiple images
 };
 
 export default function RoomCard({
-  id,
-  name,
-  price,
+  title,
+  desc,
+  href,
+  priceFrom,
   image,
-  amenities,
-  description,
-}: RoomCardProps) {
-  return (
-    <div className="bg-offwhite rounded-lg overflow-hidden border border-cream shadow-sm hover:shadow-md transition-shadow">
-      {/* Clicking the image already goes to the room page */}
-      <Link href={`/rooms#${id}`} className="relative block h-56 group">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 33vw"
-        />
-        <span className="sr-only">View {name} details</span>
-      </Link>
+  images,
+}: Props) {
+  const photos = images && images.length > 0 ? images : (image ? [image] : []);
+  const [idx, setIdx] = useState(0);
 
+  const go = (dir: -1 | 1) => {
+    if (photos.length < 2) return;
+    setIdx(s => (s + dir + photos.length) % photos.length);
+  };
+
+  return (
+    <article className="card overflow-hidden">
+      {/* Image / Carousel */}
+      <div className="relative">
+        {photos.length > 0 ? (
+          <>
+            <img
+              src={photos[idx]}
+              alt=""
+              className="w-full h-56 md:h-64 object-cover transition"
+            />
+
+            {/* photo count badge */}
+            {photos.length > 1 && (
+              <span className="absolute top-3 right-3 rounded-full bg-black/55 text-white text-xs px-2 py-1 shadow">
+                {photos.length} {photos.length === 1 ? 'photo' : 'photos'}
+              </span>
+            )}
+
+            {/* arrows (only if multiple) */}
+            {photos.length > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => go(-1)}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 grid h-9 w-9 place-items-center rounded-full bg-black/45 text-white"
+                  aria-label="Previous photo"
+                >
+                  ‹
+                </button>
+                <button
+                  type="button"
+                  onClick={() => go(1)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 grid h-9 w-9 place-items-center rounded-full bg-black/45 text-white"
+                  aria-label="Next photo"
+                >
+                  ›
+                </button>
+
+                {/* dots */}
+                <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
+                  {photos.map((_, i) => (
+                    <span
+                      key={i}
+                      className={`h-1.5 w-1.5 rounded-full ${i === idx ? 'bg-white' : 'bg-white/55'}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+          </>
+        ) : (
+          <div className="w-full h-56 md:h-64 bg-stone/20" />
+        )}
+      </div>
+
+      {/* Copy */}
       <div className="p-5">
-        <div className="flex items-center justify-between mb-2">
-          {/* 🔗 Make the NAME click through to the same place */}
-          <Link
-            href={`/rooms#${id}`}
-            className="font-heading text-xl font-semibold text-forest hover:underline decoration-2 underline-offset-4 focus:outline-none focus:ring-2 focus:ring-brass rounded"
-          >
-            {name}
-          </Link>
-          <span className="text-forest font-semibold">{price}</span>
+        <div className="flex items-start justify-between gap-4">
+          <h3 className="text-xl font-semibold">{title}</h3>
+          {priceFrom && (
+            <div className="text-forest font-semibold whitespace-nowrap">
+              From {priceFrom}
+            </div>
+          )}
         </div>
 
-        <p className="text-sm mb-3 line-clamp-2">{description}</p>
+        <p className="mt-2 text-timber/80">{desc}</p>
 
-        <ul className="text-sm text-brown/80 mb-4 list-disc pl-5 space-y-1">
-          {amenities.slice(0, 3).map((a, i) => (
-            <li key={i}>{a}</li>
-          ))}
-        </ul>
-
-        <div className="flex gap-2">
-          <Link href={`/rooms#${id}`} className="btn-secondary">
-            Room details
-          </Link>
-          <Link href="/rooms" className="btn-primary">
+        {/* CTA */}
+        <div className="mt-5">
+          <a href={href} className="room-cta no-underline text-center block">
             Check availability
-          </Link>
+          </a>
         </div>
       </div>
-    </div>
+    </article>
   );
 }

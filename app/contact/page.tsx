@@ -1,63 +1,125 @@
-'use client';
+// app/contact/page.tsx
+
+export const metadata = {
+  title: "Contact – The Anchor Hotel",
+  description:
+    "Get in touch with The Anchor Hotel in Haydon Bridge. Find our details or send us a message.",
+};
 
 export default function ContactPage() {
   return (
-    <div className="section-padding bg-offwhite">
-      <div className="container-custom">
-        <h1 className="font-heading text-4xl font-bold text-forest mb-8 text-center">Contact</h1>
-
-        <div className="grid md:grid-cols-2 gap-12">
-          <div className="bg-cream rounded-lg p-8 border-2 border-brass">
-            <h2 className="font-heading text-2xl font-semibold text-forest mb-4">Send us a message</h2>
-            <form
-              className="space-y-4"
-              onSubmit={(e) => {
-                e.preventDefault();
-                // no-op submit (demo)
-              }}
-            >
-              <input
-                className="w-full rounded-lg border border-cream bg-offwhite px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brass"
-                placeholder="Name"
-                name="name"
-                required
-              />
-              <input
-                className="w-full rounded-lg border border-cream bg-offwhite px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brass"
-                placeholder="Email"
-                type="email"
-                name="email"
-                required
-              />
-              <textarea
-                className="w-full rounded-lg border border-cream bg-offwhite px-4 py-3 h-32 resize-vertical focus:outline-none focus:ring-2 focus:ring-brass"
-                placeholder="Message"
-                name="message"
-                required
-              />
-              <button className="btn-primary" type="submit">Send</button>
-            </form>
-          </div>
-
-          <div className="bg-cream rounded-lg p-8 border-2 border-brass">
-            <h2 className="font-heading text-2xl font-semibold text-forest mb-4">Hotel details</h2>
-            <div className="space-y-2">
-              <p className="font-semibold text-forest">The Anchor Hotel</p>
-              <p>Haydon Bridge</p>
-              <p>Northumberland</p>
-              <p>NE47 6AB</p>
-              <p className="mt-3">
-                📞 <a href="tel:+441234567890" className="hover:text-brass">01234 567 890</a>
-              </p>
-              <p>
-                ✉️ <a href="mailto:info@theanchorbridge.co.uk" className="hover:text-brass">info@theanchorbridge.co.uk</a>
+    <>
+      {/* Hero with /public/anchor-hero.jpg */}
+      <section
+        className="relative w-full h-[48vh] min-h-[360px] overflow-hidden"
+        aria-label="The Anchor Hotel"
+        style={{
+          backgroundImage: "url('/anchor-hero.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-transparent" />
+        <div className="relative h-full flex items-end">
+          <div className="container-wide pb-10">
+            <div className="max-w-2xl">
+              <h1 className="text-offwhite font-display text-4xl sm:text-5xl">
+                Contact
+              </h1>
+              <p className="text-offwhite/85 mt-3">
+                We’d love to hear from you.
               </p>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Map block kept on the homepage per our last change. If you want it duplicated here, say the word. */}
-      </div>
-    </div>
+      {/* Contact content */}
+      <section className="section">
+        <div className="container-wide grid lg:grid-cols-2 gap-6">
+          {/* Simple static form (no onSubmit handler to keep it a Server Component) */}
+          <div className="card p-6">
+            <h2 className="text-xl font-display font-semibold mb-4">
+              Send us a message
+            </h2>
+            <form method="post" action="#">
+              <label className="block text-sm font-medium mb-1">Name</label>
+              <input
+                type="text"
+                name="name"
+                className="input mb-4"
+                placeholder="Your name"
+                required
+              />
+
+              <label className="block text-sm font-medium mb-1">Email</label>
+              <input
+                type="email"
+                name="email"
+                className="input mb-4"
+                placeholder="you@example.com"
+                required
+              />
+
+              <label className="block text-sm font-medium mb-1">Message</label>
+              <textarea
+                name="message"
+                className="textarea mb-4"
+                rows={6}
+                placeholder="How can we help?"
+                required
+              />
+
+              <button
+                type="submit"
+                className="inline-flex items-center rounded-xl px-5 py-2.5 bg-brass text-offwhite font-medium shadow-md hover:shadow-lg hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-brass/40"
+              >
+                Send
+              </button>
+            </form>
+          </div>
+
+          {/* Hotel details */}
+          <div className="card p-6">
+            <h2 className="text-xl font-display font-semibold mb-3">
+              Hotel details
+            </h2>
+            <div className="space-y-2 text-timber/85">
+              <div className="font-semibold text-timber">The Anchor Hotel</div>
+              <div>
+                Haydon Bridge
+                <br />
+                Northumberland
+                <br />
+                NE47 6AB
+              </div>
+              <div className="pt-2">
+                Tel:{" "}
+                <a className="link" href="tel:+441234567890">
+                  01234 567 890
+                </a>
+                <br />
+                Email:{" "}
+                <a className="link" href="mailto:info@theanchorbridge.co.uk">
+                  info@theanchorbridge.co.uk
+                </a>
+              </div>
+
+              <div className="pt-4">
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=The+Anchor+Hotel+Haydon+Bridge"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center rounded-xl px-4 py-2 bg-brass text-offwhite font-medium shadow-md hover:shadow-lg hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-brass/40"
+                >
+                  Get directions
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

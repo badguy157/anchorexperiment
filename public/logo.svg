@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Simple, unmistakable anchor -->
+  <circle cx="19" cy="19" r="18" stroke="#0F3D2E" stroke-width="1.5" fill="none"/>
+  <!-- ring -->
+  <circle cx="19" cy="10.5" r="2.1" fill="#0F3D2E"/>
+  <!-- shank -->
+  <path d="M19 12.8v10.2" stroke="#0F3D2E" stroke-width="2" stroke-linecap="round"/>
+  <!-- stock -->
+  <path d="M13.5 17.3h11" stroke="#0F3D2E" stroke-width="2" stroke-linecap="round"/>
+  <!-- arms & flukes -->
+  <path d="M11.2 23.5c2.2 4.2 4.7 6.3 7.8 6.3s5.6-2.1 7.8-6.3" stroke="#0F3D2E" stroke-width="2" stroke-linecap="round"/>
+  <path d="M11.2 23.5l2.4.5M26.8 23.5l-2.4.5" stroke="#0F3D2E" stroke-width="2" stroke-linecap="round"/>
+</svg>
