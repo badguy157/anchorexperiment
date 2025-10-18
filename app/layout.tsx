@@ -1,48 +1,39 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Script from "next/script";
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter, Cormorant_Garamond } from 'next/font/google';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-cormorant',
+  weight: ['400','500','600','700'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  title: "The Anchor Hotel – Haydon Bridge",
-  description:
-    "Riverside Tavern & Inn since 1422. Eat, drink, and stay by the South Tyne in Haydon Bridge, Northumberland.",
-  metadataBase: new URL("https://example.com"), // update to your real domain when ready
+  title: 'The Anchor Hotel, Haydon Bridge — Est. 1422',
+  description: 'Riverside rooms, hearty food & ale. Northumberland hospitality since 1422.',
+  metadataBase: new URL('https://anchorexperiment.vercel.app/'),
+  openGraph: {
+    title: 'The Anchor Hotel, Haydon Bridge — Est. 1422',
+    description: 'Riverside rooms, hearty food & ale. Northumberland hospitality since 1422.',
+    url: 'https://anchorexperiment.vercel.app/',
+    siteName: 'The Anchor Hotel',
+    images: ['/hero.jpg'],
+    locale: 'en_GB',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const gaId = process.env.NEXT_PUBLIC_GA_ID; // optional
-
   return (
-    <html lang="en">
-      <body className="min-h-screen flex flex-col bg-offwhite text-brown">
-        {/* Header */}
+    <html lang="en-GB" className={`${inter.variable} ${cormorant.variable}`}>
+      <body>
         <Header />
-
-        {/* Page content */}
-        <main className="flex-1 pt-16 md:pt-20">{children}</main>
-
-        {/* Footer */}
+        <main>{children}</main>
         <Footer />
-
-        {/* Optional: Google Analytics via next/script */}
-        {gaId && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}');
-              `}
-            </Script>
-          </>
-        )}
       </body>
     </html>
   );
