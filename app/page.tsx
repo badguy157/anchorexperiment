@@ -28,7 +28,8 @@ export default function Home() {
             <div className="mt-5">
               <a
                 href="/rooms"
-                className="btn btn-brass"
+                className="btn btn-gold btn--sm"
+                aria-label="Browse rooms"
               >
                 Browse Rooms
               </a>
@@ -49,7 +50,7 @@ export default function Home() {
           <h2 className="text-3xl sm:text-4xl font-display font-bold">
             Eat &amp; Drink
           </h2>
-          <div className="rule my-6"></div>
+          <div className="rule my-6" />
 
           <div className="grid md:grid-cols-3 gap-6">
             <VenueCard
@@ -84,7 +85,7 @@ export default function Home() {
       <section className="section">
         <div className="container-wide">
           <h2 className="text-3xl sm:text-4xl font-display font-bold">Find Us</h2>
-          <div className="rule my-6"></div>
+          <div className="rule my-6" />
 
           <div className="grid lg:grid-cols-[2fr_1fr] gap-6 items-stretch">
             {/* Map */}
@@ -124,16 +125,16 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="mt-5 flex gap-3">
+              <div className="mt-5">
                 <a
                   href="https://www.google.com/maps/dir/?api=1&destination=The+Anchor+Hotel+Haydon+Bridge"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn btn-brass"
+                  className="btn btn-gold btn--sm"
+                  aria-label="Open Google Maps directions to The Anchor Hotel"
                 >
                   Get directions
                 </a>
-                {/* Intentionally NO Contact button per your request */}
               </div>
             </div>
           </div>
