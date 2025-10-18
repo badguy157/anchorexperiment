@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --forest: #0F3D2E;
+  --brass:  #C6A15B;
+  --cream:  #F7F3EB;
+  --brown:  #3B2C22;
+  --offwhite: #FAFAF8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background-color: var(--offwhite);
+  color: var(--brown);
+}
+
+/* Buttons */
+.btn-primary {
+  @apply bg-brass text-brown font-semibold px-6 py-3 rounded-md hover:bg-opacity-90 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brass focus:ring-offset-2;
+}
+.btn-secondary {
+  @apply bg-forest text-offwhite font-semibold px-6 py-3 rounded-md hover:bg-opacity-90 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-forest focus:ring-offset-2;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-heading;
+}
+
+/* Layout helpers */
+.section-padding {
+  /* was py-16 md:py-24; trimmed to reduce the big white gaps */
+  @apply py-12 md:py-16 px-4 md:px-8;
+}
+.container-custom {
+  @apply max-w-7xl mx-auto;
+}
+
+/* New: tighter grid option for dense sections */
+.grid-tight {
+  @apply gap-6 md:gap-8;
+}
+
+/* New: card base to make cards stretch evenly in grids */
+.card-base {
+  @apply bg-offwhite border border-cream rounded-lg shadow-sm hover:shadow-md transition-shadow h-full flex flex-col overflow-hidden;
+}
+.card-body {
+  @apply p-5 flex-1 flex flex-col;
+}
+
+/* New: consistent image aspect ratios for cards (pick one) */
+.img-4-3  { @apply relative aspect-[4/3]; }   /* good for room photos */
+.img-16-9 { @apply relative aspect-[16/9]; }  /* good for venue/hero thumbs */
+.img-cover { @apply object-cover; }
