@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
 
         {/* Page content */}
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-16 md:pt-20">{children}</main>
 
         {/* Footer */}
         <Footer />

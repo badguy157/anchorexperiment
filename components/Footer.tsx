@@ -4,9 +4,7 @@ export default function Footer() {
   return (
     <footer className="bg-forest/95 text-offwhite border-t border-cream pt-12 pb-8">
       <div className="container-custom px-4">
-      <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1.2fr_1.4fr] md:grid-cols-2 items-start">
-
-
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr_1.2fr_1.4fr] md:grid-cols-2 items-start">
           {/* Brand / Address */}
           <div>
             <h3 className="font-heading text-xl font-semibold mb-4 text-cream">
@@ -37,6 +35,48 @@ export default function Footer() {
                   info@theanchorbridge.co.uk
                 </a>
               </p>
+            </div>
+
+            {/* Social section */}
+            <div className="mt-6">
+              <h4 className="font-heading text-lg font-semibold mb-3 text-cream">
+                Follow Us
+              </h4>
+              <div className="flex items-center gap-4">
+                {/* Facebook */}
+                <a
+                  href="https://www.facebook.com/theanchorhotelhaydonbridge"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-cream/60 bg-white/5 hover:bg-brass/20 transition-all duration-300"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="h-5 w-5 text-cream group-hover:text-brass transition-colors"
+                  >
+                    <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.24 0-1.63.77-1.63 1.56v1.86h2.78l-.44 2.9h-2.34V22C18.34 21.25 22 17.08 22 12.06z" />
+                  </svg>
+                </a>
+
+                {/* Instagram */}
+                <a
+                  href="https://www.instagram.com/theanchorhotelhaydonbridge"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-cream/60 bg-white/5 hover:bg-brass/20 transition-all duration-300"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="h-5 w-5 text-cream group-hover:text-brass transition-colors"
+                  >
+                    <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.51 5.51 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm6-2.25a.75.75 0 1 1-.75.75.75.75 0 0 1 .75-.75z" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -84,7 +124,6 @@ export default function Footer() {
               Find Us
             </h4>
             <div className="rounded-xl overflow-hidden border border-cream/70 shadow-lg hover:shadow-brass/30 transition-shadow duration-300">
-
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2285.052948751908!2d-2.246349423107107!3d54.97540577399251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487e899f8cb19833%3A0x398e7d0e6b88f7ce!2sThe%20Anchor%20Hotel%2C%20Haydon%20Bridge!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
                 width="100%"
@@ -99,7 +138,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-2 flex flex-col sm:flex-row items-center justify-between text-sm text-offwhite/70 gap-2">
+        <div className="pt-2 mt-10 flex flex-col sm:flex-row items-center justify-between text-sm text-offwhite/70 gap-2 border-t border-cream/40 pt-4">
           <p>&copy; {new Date().getFullYear()} The Anchor Hotel. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/privacy" className="hover:text-brass transition-colors">Privacy</Link>
