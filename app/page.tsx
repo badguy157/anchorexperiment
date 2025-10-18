@@ -62,15 +62,11 @@ export default function Home() {
 
       {/* Our Story strip on home with bold title */}
       <section className="section">
-        <div className="container-wide">
-          <p className="kicker">Our Story</p>
-          <h2 className="text-3xl sm:text-4xl font-display font-semibold">
-            From Court &amp; Gaol to Riverside Inn
-          </h2>
-          <div className="rule my-6" />
-          <Timeline />
-        </div>
-      </section>
+  <div className="container-wide">
+    <Timeline />
+  </div>
+</section>
+
 
       <Reviews />
     </>

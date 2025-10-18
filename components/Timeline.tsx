@@ -9,7 +9,9 @@ export default function Timeline(){
       <section className="section">
         <div className="container-wide">
           <p className="uppercase tracking-[0.2em] text-timber/60 text-xs">Our Story</p>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-display">From Court &amp; Gaol to Riverside Inn</h2>
+          <h2 className="font-display text-3xl sm:text-4xl font-bold">
+  From Court & Gaol to Riverside Inn
+</h2>
           <div className="rule my-6"></div>
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {events.map(e=>(
