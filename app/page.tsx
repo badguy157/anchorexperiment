@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="hero">
         <video
           className="video-bleed"
           autoPlay
@@ -19,11 +19,9 @@ export default function Home() {
           preload="metadata"
         >
           <source src="/hero.mp4" type="video/mp4" />
-          {/* Optional webm version if you generated one */}
-          {/* <source src="/hero.webm" type="video/webm" /> */}
         </video>
 
-        <div className="relative z-10 text-center text-offwhite px-4 max-w-4xl drop-shadow-lg">
+        <div className="hero-overlay px-4 max-w-4xl mx-auto">
           <h1 className="font-heading text-6xl md:text-7xl font-extrabold mb-4 tracking-tight">
             The Anchor Hotel
           </h1>
@@ -211,62 +209,4 @@ export default function Home() {
                   <p className="text-brass text-sm font-semibold mb-2">
                     {a.distance}
                   </p>
-                  <p className="text-brown text-sm">{a.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <Link href="/explore" className="btn-secondary">
-              Explore More
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* REVIEWS */}
-      <section className="section-padding bg-cream">
-        <div className="container-custom">
-          <div className="text-center mb-10">
-            <h2 className="font-heading text-4xl font-bold text-forest">
-              What Our Guests Say
-            </h2>
-            <p className="text-brown mt-3 max-w-2xl mx-auto">
-              Genuine snippets from recent stays at The Anchor.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {reviews.map((r, index) => (
-              <article
-                key={index}
-                className="bg-white border border-cream rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div
-                  className="flex gap-1 mb-4"
-                  aria-label={`${r.rating} out of 5 stars`}
-                >
-                  {[...Array(r.rating)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-5 h-5 text-brass"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-brown mb-4 italic leading-relaxed">
-                  “{r.quote}”
-                </p>
-                <p className="font-semibold text-forest">— {r.author}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
+                  <p
