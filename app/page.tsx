@@ -8,33 +8,47 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/anchor-hero.jpg"
-            alt="The Anchor Hotel riverside view"
-            fill
-            priority
-            className="object-cover brightness-75"
-            sizes="100vw"
-          />
-        </div>
+      {/* HERO (video) */}
+<section className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+  {/* Video background */}
+  <div className="absolute inset-0 z-0">
+    <video
+      className="h-full w-full object-cover"
+      autoPlay
+      muted
+      loop
+      playsInline
+      poster="/hero-poster.jpg"
+      preload="metadata"
+    >
+      {/* Smaller/modern first */}
+      <source src="/hero.webm" type="video/webm" />
+      {/* Fallback for Safari/older */}
+      <source src="/hero.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
 
-        <div className="relative z-10 text-center text-offwhite px-4 max-w-4xl">
-          <h1 className="font-heading text-5xl md:text-7xl font-bold mb-4">The Anchor Hotel</h1>
-          <p className="font-heading text-2xl md:text-3xl mb-2">Riverside Tavern & Inn Since 1422</p>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-            Eat, drink, and stay by the South Tyne in the heart of Haydon Bridge.
-          </p>
+    {/* Subtle overlay so text stays readable */}
+    <div className="absolute inset-0 bg-black/35" />
+  </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/rooms" className="btn-primary text-lg">Check availability</Link>
-            <Link href="/eat-and-drink" className="btn-secondary text-lg bg-offwhite text-forest hover:bg-cream">
-              Eat & Drink
-            </Link>
-          </div>
-        </div>
-      </section>
+  {/* Copy + CTAs (unchanged) */}
+  <div className="relative z-10 text-center text-offwhite px-4 max-w-4xl">
+    <h1 className="font-heading text-5xl md:text-7xl font-bold mb-4">The Anchor Hotel</h1>
+    <p className="font-heading text-2xl md:text-3xl mb-2">Riverside Tavern &amp; Inn Since 1422</p>
+    <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+      Eat, drink, and stay by the South Tyne in the heart of Haydon Bridge.
+    </p>
+
+    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <Link href="/rooms" className="btn-primary text-lg">Check availability</Link>
+      <Link href="/eat-and-drink" className="btn-secondary text-lg bg-offwhite text-forest hover:bg-cream">
+        Eat &amp; Drink
+      </Link>
+    </div>
+  </div>
+</section>
+
 
       {/* STORY */}
       <section className="section-padding bg-offwhite">
