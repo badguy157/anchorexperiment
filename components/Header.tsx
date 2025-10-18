@@ -29,13 +29,12 @@ export default function Header() {
   useEffect(() => { setOpen(false); }, [pathname]);
 
   return (
-    <header className={`sticky top-0 z-50 ${scrolled ? 'bg-parchment/90 backdrop-blur supports-[backdrop-filter]:bg-parchment/70' : 'bg-parchment'}`}>
+    <header className={`site-header sticky top-0 z-50 ${scrolled ? 'bg-parchment/90 backdrop-blur supports-[backdrop-filter]:bg-parchment/70' : 'bg-parchment'}`}>
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center gap-4">
-        {/* Brand (flex-1 so it never collides with the nav) */}
-        <Link href="/" className="flex-1 min-w-0 flex items-center gap-2 no-underline">
-          <img src="/logo.svg" alt="The Anchor logo" className="h-8 w-auto shrink-0" />
+        {/* Brand takes flexible space so nav never collides */}
+        <Link href="/" className="brand flex-1 min-w-0 flex items-center gap-2 no-underline">
+          <img src="/logo-icon.svg" alt="" className="h-8 w-8 shrink-0" />
           <span className="font-display text-xl tracking-tight text-forest shrink-0">The Anchor</span>
-          {/* Show the long bit only when there’s room */}
           <span className="hidden lg:inline-block text-xs uppercase tracking-[0.2em] text-timber/60 whitespace-nowrap ml-2">
             Haydon Bridge · 1422
           </span>

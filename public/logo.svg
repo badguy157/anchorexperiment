@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="180" height="40" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg" fill="none">
-  <!-- Mark -->
-  <g transform="translate(6,6)">
-    <!-- Bridge arch -->
-    <path d="M0,18 C10,-2 44,-2 54,18" stroke="#0F3D2E" stroke-width="2" stroke-linecap="round"/>
-    <!-- River ripples -->
-    <path d="M2,26 q4,3 8,0 t8,0 t8,0 t8,0" stroke="#0F3D2E" stroke-width="1.5" stroke-linecap="round"/>
-    <!-- Little anchor -->
-    <circle cx="27" cy="7" r="2" fill="#0F3D2E"/>
-    <path d="M27,9 v9 m-3,-4 h6 m-2,4 l2,2 m-4,-2 l-2,2" stroke="#0F3D2E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  <!-- Wordmark -->
-  <text x="70" y="25" fill="#0F3D2E" font-size="15" font-family="ui-serif, 'Cormorant Garamond', Georgia, serif" letter-spacing=".5">
-    The Anchor · Haydon Bridge · 1422
-  </text>
+<svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <!-- Bridge arch -->
+  <path d="M4 20c6-10 22-10 28 0" stroke="#0F3D2E" stroke-width="2" stroke-linecap="round"/>
+  <!-- River ripples -->
+  <path d="M6 27q3 3 6 0t6 0t6 0t6 0" stroke="#0F3D2E" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- Little anchor -->
+  <circle cx="18" cy="9" r="2" fill="#0F3D2E"/>
+  <path d="M18 11v8m-3-4h6m-2 4l2 2m-4-2l-2 2" stroke="#0F3D2E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

@@ -5,10 +5,7 @@
 /* =========================
    Theme tokens / base
    ========================= */
-:root {
-  --nav-height: 64px;     /* sticky header height */
-  --hero-offset: 72px;    /* measured seam under header; adjust if needed */
-}
+:root { --nav-height: 64px; }
 
 html { scroll-behavior: smooth; }
 body { @apply bg-parchment text-timber font-ui antialiased; }
@@ -40,26 +37,38 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 .card { @apply bg-white/90 rounded-2xl shadow-card ring-1 ring-black/5; }
 
 /* =========================
-   Header / Nav
+   Header / Nav (seam-proof line)
    ========================= */
-header {
-  border-bottom: 1px solid rgba(59,44,34,.15);
-  box-shadow: 0 2px 10px rgba(30,24,20,0.04);
+.site-header {
+  position: sticky;
+  top: 0;
   background: #FAF7F0; /* parchment */
+  /* Remove real border to eliminate seams */
+  border-bottom: 0 !important;
+  box-shadow: 0 2px 10px rgba(30,24,20,0.04);
 }
-header .h-16 { height: 64px; }
-header nav a { letter-spacing: .01em; color: rgba(59,44,34,.92); } /* timber */
-header nav a:hover { color: #0F3D2E; } /* forest */
+/* Draw the brass “rope” INSIDE the header so it never gaps from the hero */
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg,#C6A15B, rgba(198,161,91,.15));
+  pointer-events: none;
+}
+.site-header .h-16 { height: var(--nav-height); }
+.site-header nav a { letter-spacing: .01em; color: rgba(59,44,34,.92); } /* timber */
+.site-header nav a:hover { color: #0F3D2E; } /* forest */
 
-/* active link = subtle brass rope underline */
-header nav a.active,
-header nav a[aria-current="page"] {
+/* active link underline (kept) */
+.site-header nav a.active,
+.site-header nav a[aria-current="page"] {
   position: relative;
   font-weight: 600;
-  color: #0F3D2E; /* forest */
+  color: #0F3D2E;
 }
-header nav a.active::after,
-header nav a[aria-current="page"]::after {
+.site-header nav a.active::after,
+.site-header nav a[aria-current="page"]::after {
   content: "";
   position: absolute;
   left: 0; right: 0; bottom: -10px;
@@ -69,28 +78,22 @@ header nav a[aria-current="page"]::after {
 }
 
 /* =========================
-   HERO (seamless under sticky header)
+   HERO (simple, no offsets; header overlays cleanly)
    ========================= */
-/* On smaller screens the real gap is a touch less */
-@media (max-width: 1024px) {
-  :root { --hero-offset: 64px; }
-}
-
-.hero-wrap { position: relative; margin-top: -1px; }
+.hero-wrap { position: relative; }
 .hero-video {
   position: relative;
-  height: calc(100svh - var(--nav-height) + var(--hero-offset));
+  height: calc(100svh - var(--nav-height));
   overflow: hidden;
-  background: transparent; /* avoid black behind video */
+  background: #000; /* prevents flashes while video loads */
 }
 .hero-video video {
   position: absolute;
-  left: 0;
-  top: calc(var(--hero-offset) * -1);                 /* slide video up to sit under header */
+  inset: 0;
   width: 100%;
-  height: calc(100% + (var(--hero-offset) * 2));      /* overscan to cover rounding */
+  height: 100%;
   object-fit: cover !important;
-  transform: translateZ(0) scale(1.02);
+  transform: translateZ(0) scale(1.045); /* slight overscan to hide letterboxing */
 }
 
 .hero-overlay {
@@ -142,4 +145,4 @@ header nav a[aria-current="page"]::after {
   border-top: 0;
 }
 .footer a { color: #FAF7F0; text-decoration: underline; }
-.footer .btn { color: #0F3D2E; } /* if buttons appear in footer */
+.footer .btn { color: #0F3D2E; }
