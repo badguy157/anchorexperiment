@@ -6,7 +6,7 @@ import { venues, rooms, events, attractions, reviews } from "@/lib/data";
 
 export default function Home() {
   return (
-    <>
+    <main>
       {/* HERO */}
       <section className="hero">
         <video
@@ -67,15 +67,10 @@ export default function Home() {
                 Six Centuries of Welcome
               </h2>
               <div className="space-y-4 text-brown leading-relaxed">
+                <p>For over six centuries, The Anchor has welcomed travelers and locals alike.</p>
                 <p>
-                  For over six centuries, The Anchor has welcomed travelers and
-                  locals alike.
-                </p>
-                <p>
-                  Nestled beside the River South Tyne in Haydon Bridge, our inn,
-                  tavern, and café offer hearty food, well-kept drinks, and a
-                  restful night’s sleep — all with the charm of a truly historic
-                  Northumberland setting.
+                  Nestled beside the River South Tyne in Haydon Bridge, our inn, tavern, and café offer hearty food,
+                  well-kept drinks, and a restful night’s sleep — all with the charm of a truly historic Northumberland setting.
                 </p>
               </div>
               <Link
@@ -97,8 +92,7 @@ export default function Home() {
               Eat & Drink — Our Venues
             </h2>
             <p className="text-brown text-lg max-w-2xl mx-auto">
-              From morning coffee to evening ale, we have the perfect spot for
-              every occasion.
+              From morning coffee to evening ale, we have the perfect spot for every occasion.
             </p>
           </div>
 
@@ -121,12 +115,8 @@ export default function Home() {
       <section className="section-padding bg-offwhite">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="font-heading text-4xl font-bold text-forest mb-4">
-              Stay With Us
-            </h2>
-            <p className="text-brown text-lg max-w-2xl mx-auto">
-              Four room types — all with breakfast included.
-            </p>
+            <h2 className="font-heading text-4xl font-bold text-forest mb-4">Stay With Us</h2>
+            <p className="text-brown text-lg max-w-2xl mx-auto">Four room types — all with breakfast included.</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-4">
@@ -149,23 +139,14 @@ export default function Home() {
       <section className="section-padding bg-cream">
         <div className="container-custom">
           <div className="text-center mb-10">
-            <h2 className="font-heading text-4xl font-bold text-forest mb-4">
-              What’s On
-            </h2>
-            <p className="text-brown text-lg">
-              Join us for regular events in the Commodore Lounge
-            </p>
+            <h2 className="font-heading text-4xl font-bold text-forest mb-4">What’s On</h2>
+            <p className="text-brown text-lg">Join us for regular events in the Commodore Lounge</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {events.map((event, i) => (
-              <div
-                key={i}
-                className="bg-offwhite rounded-lg p-6 border-2 border-brass shadow"
-              >
-                <h3 className="font-heading text-2xl font-semibold text-forest mb-2">
-                  {event.title}
-                </h3>
+              <div key={i} className="bg-offwhite rounded-lg p-6 border-2 border-brass shadow">
+                <h3 className="font-heading text-2xl font-semibold text-forest mb-2">{event.title}</h3>
                 <p className="text-brass font-semibold mb-2">{event.time}</p>
                 <p className="text-brown text-sm mb-3">{event.venue}</p>
                 <p className="text-brown">{event.description}</p>
@@ -179,12 +160,8 @@ export default function Home() {
       <section className="section-padding bg-offwhite">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="font-heading text-4xl font-bold text-forest mb-4">
-              Explore Northumberland
-            </h2>
-            <p className="text-brown text-lg">
-              Your perfect base for discovering the region
-            </p>
+            <h2 className="font-heading text-4xl font-bold text-forest mb-4">Explore Northumberland</h2>
+            <p className="text-brown text-lg">Your perfect base for discovering the region</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -203,10 +180,50 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-heading text-xl font-semibold text-forest mb-2">
-                    {a.title}
-                  </h3>
-                  <p className="text-brass text-sm font-semibold mb-2">
-                    {a.distance}
-                  </p>
-                  <p
+                  <h3 className="font-heading text-xl font-semibold text-forest mb-2">{a.title}</h3>
+                  <p className="text-brass text-sm font-semibold mb-2">{a.distance}</p>
+                  <p className="text-brown text-sm">{a.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <Link href="/explore" className="btn-secondary">Explore More</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* REVIEWS */}
+      <section className="section-padding bg-cream">
+        <div className="container-custom">
+          <div className="text-center mb-10">
+            <h2 className="font-heading text-4xl font-bold text-forest">What Our Guests Say</h2>
+            <p className="text-brown mt-3 max-w-2xl mx-auto">
+              Genuine snippets from recent stays at The Anchor.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {reviews.map((r, index) => (
+              <article
+                key={index}
+                className="bg-white border border-cream rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="flex gap-1 mb-4" aria-label={`${r.rating} out of 5 stars`}>
+                  {[...Array(r.rating)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-brass" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-brown mb-4 italic leading-relaxed">“{r.quote}”</p>
+                <p className="font-semibold text-forest">— {r.author}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
