@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import BrandLogo from './BrandLogo';
 
 const links = [
   { href: '/rooms', label: 'Stay' },
@@ -32,8 +33,7 @@ export default function Header() {
     <header className={`sticky top-0 z-50 ${scrolled ? 'bg-parchment/90 backdrop-blur supports-[backdrop-filter]:bg-parchment/70' : 'bg-parchment'}`}>
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 no-underline">
-          <img src="/logo.png" alt="Anchor Hotel logo" className="h-8 w-8 rounded-full" />
-          <span className="font-display text-xl tracking-tight text-forest">The Anchor</span>
+          <BrandLogo mark="bridge-river" variant="dark" size={28} showWordmark />
           <span className="ml-2 text-xs uppercase tracking-[0.2em] text-timber/60">Haydon Bridge · 1422</span>
         </Link>
 
