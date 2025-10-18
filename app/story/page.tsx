@@ -2,10 +2,14 @@
 export default function StoryPage() {
   return (
     <>
-      {/* Use the hero poster as a safe default; swap to a dedicated image later if you want */}
+      {/* Real image behind the gradient so there’s no grey slab */}
       <section
         className="page-hero"
-        style={{ backgroundImage: "url('/hero.jpg')" }}
+        style={{
+          backgroundImage: "url('/anchor-hero.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       >
         <div className="page-hero-inner">
           <h1>Our Story</h1>
@@ -22,9 +26,8 @@ export default function StoryPage() {
             Six Centuries of Welcome
           </h2>
           <p className="mt-3 text-timber/80">
-            For over six centuries, The Anchor has stood on the banks of the South
-            Tyne, welcoming travellers and serving locals in the heart of Haydon
-            Bridge.
+            For over six centuries, The Anchor has stood on the banks of the South Tyne,
+            welcoming travellers and serving locals in the heart of Haydon Bridge.
           </p>
         </div>
 
@@ -40,8 +43,8 @@ export default function StoryPage() {
           <div className="page-card">
             <h3 className="font-semibold">A Living Local</h3>
             <p className="mt-2 text-timber/80">
-              Today we’re a village pub, restaurant, and inn—still rooted in the
-              craft and rhythm of Northumberland life.
+              Today we’re a village pub, restaurant, and inn—still rooted in the craft
+              and rhythm of Northumberland life.
             </p>
           </div>
         </div>
