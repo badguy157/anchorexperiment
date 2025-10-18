@@ -28,7 +28,7 @@ export default function Home() {
             <div className="mt-5">
               <a
                 href="/rooms"
-                className="inline-flex items-center rounded-xl px-5 py-2.5 bg-brass text-offwhite font-medium shadow-md hover:shadow-lg hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-brass/40"
+                className="btn btn-brass"
               >
                 Browse Rooms
               </a>
@@ -129,7 +129,7 @@ export default function Home() {
                   href="https://www.google.com/maps/dir/?api=1&destination=The+Anchor+Hotel+Haydon+Bridge"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-xl px-4 py-2 bg-brass text-offwhite font-medium shadow-md hover:shadow-lg hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-brass/40"
+                  className="btn btn-brass"
                 >
                   Get directions
                 </a>

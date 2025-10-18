@@ -19,11 +19,27 @@ body { @apply bg-parchment text-timber font-ui antialiased; }
 
 h1, h2, h3, h4 { @apply font-display tracking-tight; }
 
-/* Links & buttons */
+/* =========================
+   Links & buttons
+   ========================= */
 a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
-.btn { @apply inline-flex items-center justify-center px-5 py-3 rounded-xl font-semibold transition; }
-.btn-primary { @apply bg-brass text-timber hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-brass/40 shadow; }
+
+.btn {
+  @apply inline-flex items-center justify-center px-5 py-3 rounded-xl font-semibold transition;
+}
+
+/* Existing primary (keeps light text on brass — used for hero/strong CTAs) */
+.btn-primary {
+  @apply bg-brass text-timber hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-brass/40 shadow;
+}
+
+/* Outline variant */
 .btn-outline { @apply border border-brass text-forest hover:bg-brass/10; }
+
+/* NEW: Brass with dark (black) text — use this for Browse Rooms / Get directions */
+.btn-brass {
+  @apply bg-brass text-black hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-brass/40 shadow;
+}
 
 /* Premium CTA for navbar & primary actions */
 .btn-cta{
@@ -33,7 +49,11 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
   transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
   border: 1px solid rgba(107,73,36,.25);
 }
-.btn-cta:hover{ transform: translateY(-1px); filter: brightness(0.98); box-shadow: 0 2px 0 rgba(0,0,0,.08), 0 12px 24px rgba(198,161,91,.33); }
+.btn-cta:hover{
+  transform: translateY(-1px);
+  filter: brightness(0.98);
+  box-shadow: 0 2px 0 rgba(0,0,0,.08), 0 12px 24px rgba(198,161,91,.33);
+}
 
 /* High-contrast secondary button for cards */
 .btn-contrast{
@@ -53,13 +73,17 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 }
 .btn-light:hover { background: rgba(255,255,255,.20); }
 
-/* Sections & containers */
+/* =========================
+   Sections & containers
+   ========================= */
 .section     { @apply py-16; }
 .section-sm  { @apply py-10; }
 .container-narrow { @apply max-w-5xl mx-auto px-4; }
 .container-wide   { @apply max-w-7xl mx-auto px-4; }
 
-/* Cards */
+/* =========================
+   Cards
+   ========================= */
 .card { @apply bg-white/90 rounded-2xl shadow-card ring-1 ring-black/5; }
 
 /* -------------------------
@@ -99,7 +123,7 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
    ------------------------- */
 .hero-wrap {
   position: relative;
-  /* NEW: pull the hero down a few pixels to overlap the next section and kill seams */
+  /* pull the hero down a few pixels to overlap the next section and kill seams */
   margin-bottom: -4px;
 }
 
@@ -114,7 +138,7 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
   left: 0;
   top: calc(var(--hero-crop) * -1);            /* push video up so any top band is out of view */
   width: 100%;
-  /* NEW: extend beyond the container by +16px to avoid bottom letterbox on some devices */
+  /* extend beyond the container by +16px to avoid bottom letterbox on some devices */
   height: calc(100% + var(--hero-crop) + 16px);
   object-fit: cover !important;
   object-position: center top;
@@ -174,8 +198,18 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 /* -------------------------
    Page hero (Story, etc.)
    ------------------------- */
-.page-hero { position:relative; min-height: 44svh; background-size: cover; background-position: center; border-bottom: 1px solid rgba(0,0,0,.08); }
-.page-hero::before { content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(15,15,12,.62) 0%, rgba(15,15,12,.40) 60%, rgba(15,15,12,.18) 100%); }
+.page-hero {
+  position:relative;
+  min-height: 44svh;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+}
+.page-hero::before {
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(15,15,12,.62) 0%, rgba(15,15,12,.40) 60%, rgba(15,15,12,.18) 100%);
+}
 .page-hero-inner { @apply container-wide; padding-top: 5rem; padding-bottom: 5rem; }
 .page-hero h1 { color:#fff; font-weight:800; font-size: clamp(2.25rem, 3.5vw + 1rem, 3.5rem); text-shadow: 0 8px 28px rgba(0,0,0,.5); }
 .page-hero p  { color: rgba(255,255,255,.9); font-size: 1.125rem; max-width: 48ch; }
