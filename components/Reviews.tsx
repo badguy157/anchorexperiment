@@ -1,10 +1,23 @@
 // components/Reviews.tsx
-import { Star } from 'lucide-react';
+
+// Tiny inline star icon so we don't depend on lucide-react
+function StarIcon({ className = 'h-4 w-4' }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M12 17.27l-5.4 3.26 1.64-6.03L3 9.74l6.19-.53L12 3.5l2.81 5.71 6.19.53-5.24 4.76 1.64 6.03z" />
+    </svg>
+  );
+}
 
 type Review = {
   name: string;
   text: string;
-  rating?: number;
+  rating?: number; // 1..5
 };
 
 const REVIEWS: Review[] = [
@@ -23,12 +36,10 @@ export default function Reviews() {
         <div className="grid gap-6 md:grid-cols-3">
           {REVIEWS.map((r, i) => (
             <article key={i} className="card p-5 flex flex-col">
-              <div className="flex items-center gap-2">
-                <div className="flex">
-                  {Array.from({ length: r.rating ?? 5 }).map((_, idx) => (
-                    <Star key={idx} className="h-4 w-4 text-brass fill-brass" />
-                  ))}
-                </div>
+              <div className="flex items-center gap-2 text-brass">
+                {Array.from({ length: r.rating ?? 5 }).map((_, idx) => (
+                  <StarIcon key={idx} className="h-4 w-4" />
+                ))}
               </div>
               <p className="mt-3 text-timber/90 leading-relaxed">{r.text}</p>
               <p className="mt-4 text-sm text-timber/70">— {r.name}</p>
@@ -36,7 +47,7 @@ export default function Reviews() {
           ))}
         </div>
 
-        {/* Intentionally no "More Reviews" button */}
+        {/* "More Reviews" intentionally removed */}
       </div>
     </section>
   );
