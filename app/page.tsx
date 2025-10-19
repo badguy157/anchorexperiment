@@ -2,7 +2,6 @@
 import HeroMedia from "@/components/HeroMedia";
 import StickyBook from "@/components/StickyBook";
 import Eventstrip from "@/components/Eventstrip";
-import Timeline from "@/components/Timeline";
 import BookingWidget from "@/components/BookingWidget";
 import Reviews from "@/components/Reviews";
 import VenueCard from "@/components/VenueCard";
@@ -36,7 +35,7 @@ export default function Home() {
       {/* Quick availability widget */}
       <BookingWidget />
 
-      {/* Optional strip (keep if you had it before) */}
+      {/* Optional strip */}
       <Eventstrip />
 
       {/* Eat & Drink */}
@@ -70,35 +69,64 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Story (timeline + CTA) */}
+      {/* Our Story (compact — no inner header, no CTA) */}
       <section className="section">
         <div className="container-wide">
           <h2 className="text-3xl sm:text-4xl font-display font-bold">Our Story</h2>
           <div className="rule my-6" />
-        </div>
 
-        {/* The timeline component you already had */}
-        <Timeline />
+          {/* Compact, inline story cards */}
+          <div className="grid md:grid-cols-4 gap-6">
+            <article className="card p-5">
+              <div className="text-brass font-semibold">1422</div>
+              <h3 className="mt-1 font-semibold">Court &amp; Gaol</h3>
+              <p className="mt-2 text-timber/80">
+                Records point to a courthouse and gaol on this site.
+              </p>
+            </article>
 
-        <div className="container-wide mt-6">
-          <Button href="/story" variant="cta">Read the Full Story</Button>
+            <article className="card p-5">
+              <div className="text-brass font-semibold">1700s</div>
+              <h3 className="mt-1 font-semibold">Coaching Inn</h3>
+              <p className="mt-2 text-timber/80">
+                Travelers crossed the South Tyne and supped by the fire.
+              </p>
+            </article>
+
+            <article className="card p-5">
+              <div className="text-brass font-semibold">1900s</div>
+              <h3 className="mt-1 font-semibold">Riverside Tavern</h3>
+              <p className="mt-2 text-timber/80">
+                Local ales and salmon suppers became our staples.
+              </p>
+            </article>
+
+            <article className="card p-5">
+              <div className="text-brass font-semibold">Today</div>
+              <h3 className="mt-1 font-semibold">Inn &amp; Café</h3>
+              <p className="mt-2 text-timber/80">
+                Rooms with breakfast, a lively bar, and a quiet café garden.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
       {/* Recent Reviews */}
-      <section className="section">
-        <div className="container-wide">
-          <h2 className="text-3xl sm:text-4xl font-display font-bold">Recent Reviews</h2>
-          <div className="rule my-6" />
-        </div>
-        <Reviews />
-      </section>
+<section className="section">
+  <div className="container-wide">
+    <h2 className="text-3xl sm:text-4xl font-display font-bold">Recent Reviews</h2>
+    <div className="rule my-6" />
+  </div>
+  <Reviews showTitle={false} />
+</section>
+
 
       {/* Find Us + Map */}
       <section className="section">
         <div className="container-wide">
           <h2 className="text-3xl sm:text-4xl font-display font-bold">Find Us</h2>
-          <div className="rule my-6" />
+        <div className="rule my-6" />
 
           <div className="grid lg:grid-cols-[2fr_1fr] gap-6 items-stretch">
             {/* Map */}
@@ -112,7 +140,7 @@ export default function Home() {
               />
             </div>
 
-            {/* Details / Call to action */}
+            {/* Details / CTA */}
             <div className="card p-6">
               <div className="space-y-2">
                 <h3 className="text-xl font-display font-bold">The Anchor Hotel</h3>
