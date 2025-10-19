@@ -1,55 +1,43 @@
-'use client';
+// components/SiteHeader.tsx
+"use client";
 
-import Link from 'next/link';
-import clsx from 'clsx';
-import { usePathname } from 'next/navigation';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Button from "@/components/Button";
 
-const nav = [
-  { href: '/stay', label: 'Stay' },
-  { href: '/eat-and-drink', label: 'Eat & Drink' },
-  { href: '/whats-on', label: `What’s On` },
-  { href: '/gallery', label: 'Gallery' },
-  { href: '/explore', label: 'Explore' },
-  { href: '/story', label: 'Our Story' },
-  { href: '/contact', label: 'Contact' },
-];
+const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+  const pathname = usePathname();
+  const active = pathname === href;
+  return (
+    <Link
+      href={href}
+      className={active ? "active px-3 py-2" : "px-3 py-2 hover:underline"}
+      aria-current={active ? "page" : undefined}
+    >
+      {children}
+    </Link>
+  );
+};
 
 export default function SiteHeader() {
-  const pathname = usePathname();
-
-  const isActive = (href: string) =>
-    pathname === href || (href !== '/' && pathname?.startsWith(href));
-
   return (
     <header className="site-header">
-      <div className="container-wide flex items-center justify-between h-16">
-        <Link href="/" className="flex items-center gap-3 font-display text-lg hover:opacity-90">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-full ring-1 ring-black/10">
-            {/* tiny anchor mark */}
-            ⚓
-          </span>
-          <span className="hidden sm:block">The Anchor</span>
-          <span className="hidden md:block text-timber/70">HAYDON BRIDGE · 1422</span>
-        </Link>
+      <div className="mx-auto max-w-7xl px-4 h-16 flex items-center justify-between">
+        <Link href="/" className="font-display text-lg">The Anchor</Link>
 
-        <nav className="hidden md:flex items-center gap-6">
-          {nav.map(i => (
-            <Link
-              key={i.href}
-              href={i.href}
-              className={clsx('transition', isActive(i.href) ? 'active' : 'text-timber/90 hover:text-forest')}
-            >
-              {i.label}
-            </Link>
-          ))}
+        <nav className="hidden md:flex items-center gap-1">
+          <NavLink href="/rooms">Stay</NavLink>
+          <NavLink href="/eat-and-drink">Eat &amp; Drink</NavLink>
+          <NavLink href="/whats-on">What’s On</NavLink>
+          <NavLink href="/gallery">Gallery</NavLink>
+          <NavLink href="/explore">Explore</NavLink>
+          <NavLink href="/story">Our Story</NavLink>
+          <NavLink href="/contact">Contact</NavLink>
 
-          {/* Book Your Stay — navbar CTA */}
-          <Link
-            href="/rooms"
-            className="btn-cta rounded-xl px-4 py-2 leading-none"
-          >
+          {/* CTA in the navbar */}
+          <Button href="/rooms#booking" variant="cta" className="ml-3">
             Book Your Stay
-          </Link>
+          </Button>
         </nav>
       </div>
     </header>
