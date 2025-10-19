@@ -122,14 +122,15 @@ export default function Home() {
               </div>
 
               <div className="mt-5">
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=The+Anchor+Hotel+Haydon+Bridge"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-cta rounded-xl px-4 py-2 no-underline inline-flex"
-                >
-                  Get directions
-                </a>
+              <a
+  href="https://www.google.com/maps/dir/?api=1&destination=The+Anchor+Hotel+Haydon+Bridge"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn-cta rounded-xl px-4 py-2"
+>
+  Get directions
+</a>
+
               </div>
             </div>
           </div>
