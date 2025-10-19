@@ -1,38 +1,43 @@
-export default function Reviews() {
-  const items = [
-    {
-      text: 'Cozy room, lovely breakfast, and the river view was perfect.',
-      author: 'Sarah K.',
-    },
-    {
-      text: 'Proper pub downstairs and friendly staff. Will be back!',
-      author: 'Tom P.',
-    },
-    {
-      text: 'Great base for walking Hadrian’s Wall. Clean and comfortable.',
-      author: 'Elena R.',
-    },
-  ];
+// components/Reviews.tsx
+type ReviewsProps = {
+  /** Show the big heading card at the top. Default: true */
+  showTitle?: boolean;
+};
 
+export default function Reviews({ showTitle = true }: ReviewsProps) {
   return (
-    <section className="section">
-      <div className="container-wide">
-        <div className="card px-5 py-4 mb-6">
-          <h2 className="text-3xl sm:text-4xl font-display font-bold">Recent Reviews</h2>
+    <div className="container-wide">
+      {showTitle && (
+        <div className="card p-6 mb-6">
+          <h3 className="text-2xl font-display font-semibold">Recent Reviews</h3>
         </div>
+      )}
 
-        <div className="grid md:grid-cols-3 gap-5">
-          {items.map((it, idx) => (
-            <div key={idx} className="card p-5">
-              <div className="flex gap-1 text-brass" aria-hidden>
-                {'★★★★★'.split('').map((s, i) => <span key={i}>★</span>)}
-              </div>
-              <p className="mt-3">{it.text}</p>
-              <div className="mt-4 text-timber/70">— {it.author}</div>
-            </div>
-          ))}
-        </div>
+      <div className="grid md:grid-cols-3 gap-6">
+        <article className="card p-6">
+          <div className="text-brass">★★★★★</div>
+          <p className="mt-3">
+            Cozy room, lovely breakfast, and the river view was perfect.
+          </p>
+          <p className="mt-4 text-timber/80">— Sarah K.</p>
+        </article>
+
+        <article className="card p-6">
+          <div className="text-brass">★★★★★</div>
+          <p className="mt-3">
+            Proper pub downstairs and friendly staff. Will be back!
+          </p>
+          <p className="mt-4 text-timber/80">— Tom P.</p>
+        </article>
+
+        <article className="card p-6">
+          <div className="text-brass">★★★★★</div>
+          <p className="mt-3">
+            Great base for walking Hadrian’s Wall. Clean and comfortable.
+          </p>
+          <p className="mt-4 text-timber/80">— Elena R.</p>
+        </article>
       </div>
-    </section>
+    </div>
   );
 }
