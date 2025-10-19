@@ -20,47 +20,52 @@ body { @apply bg-parchment text-timber font-ui antialiased; }
 h1, h2, h3, h4 { @apply font-display tracking-tight; }
 
 /* =========================
-   Links & buttons
+   Links
    ========================= */
-a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
+a { @apply underline-offset-2 hover:underline; color:#0F3D2E; } /* forest */
 
+/* --- CTA safeguard: ensure CTA anchors never look like plain links --- */
+a.btn-cta,
+a.btn-gold,
+a.btn-contrast,
+a.btn-light,
+a.btn-outline,
+a.room-cta {
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+}
+
+/* =========================================================
+   BUTTONS — used site-wide (gold = primary CTA)
+   ========================================================= */
 .btn {
-  @apply inline-flex items-center justify-center px-5 py-3 rounded-xl font-semibold transition;
+  @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 font-semibold transition;
 }
 
-/* Existing primary (keeps light text on brass — used for hero/strong CTAs) */
-.btn-primary {
-  @apply bg-brass text-timber hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-brass/40 shadow;
-}
+.btn--lg { @apply px-6 py-3 text-base; }
+.btn--sm { @apply px-4 py-2 text-[0.95rem]; }
 
-/* Outline variant */
-.btn-outline { @apply border border-brass text-forest hover:bg-brass/10; }
-
-/* NEW: Brass with dark (black) text — use this for Browse Rooms / Get directions */
-.btn-brass {
-  @apply bg-brass text-black hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-brass/40 shadow;
-}
-
-/* Premium CTA for navbar & primary actions */
-.btn-cta{
+/* Primary (gold) */
+.btn-gold,
+.btn-cta { /* .btn-cta is an alias of .btn-gold */
   background: linear-gradient(180deg,#C6A15B 0%, #B9924B 100%);
-  color:#2b2019;
+  color:#1f2a22;                            /* dark/near-black for contrast */
+  border: 1px solid rgba(107,73,36,.28);
   box-shadow: 0 2px 0 rgba(0,0,0,.08), 0 8px 18px rgba(198,161,91,.25);
-  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
-  border: 1px solid rgba(107,73,36,.25);
 }
-.btn-cta:hover{
-  transform: translateY(-1px);
-  filter: brightness(0.98);
-  box-shadow: 0 2px 0 rgba(0,0,0,.08), 0 12px 24px rgba(198,161,91,.33);
-}
+.btn-gold:hover,
+.btn-cta:hover   { filter: brightness(.98); transform: translateY(-1px); box-shadow: 0 2px 0 rgba(0,0,0,.08), 0 12px 24px rgba(198,161,91,.33); }
+.btn-gold:focus,
+.btn-cta:focus   { outline: none; box-shadow: 0 0 0 3px rgba(198,161,91,.35); }
+.btn-gold:active,
+.btn-cta:active  { transform: translateY(0); filter: brightness(.96); }
 
-/* High-contrast secondary button for cards */
+/* Secondary (dark) if you ever need it */
 .btn-contrast{
-  @apply rounded-xl;
-  background: #143d2f; /* deep forest */
-  color: #F8FAF6;
-  border: 1px solid rgba(255,255,255,.15);
+  @apply rounded-full;
+  background:#143d2f;
+  color:#F8FAF6;
+  border:1px solid rgba(255,255,255,.15);
 }
 .btn-contrast:hover{ filter: brightness(1.06); }
 
@@ -92,9 +97,9 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 50;                    /* <- keeps header over hero/video */
-  background: #FAF7F0;            /* parchment */
-  border-bottom: 0 !important;    /* kill physical border to prevent seams */
+  z-index: 50;
+  background: #FAF7F0;
+  border-bottom: 0 !important;
   box-shadow: 0 2px 10px rgba(30,24,20,0.04);
 }
 .site-header::after {
@@ -110,7 +115,7 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 .site-header nav a:hover { color: #0F3D2E; }
 .site-header nav a.active,
 .site-header nav a[aria-current="page"] {
-  position: relative; font-weight: 700; color: #0F3D2E;  /* bolder */
+  position: relative; font-weight: 700; color: #0F3D2E;
 }
 .site-header nav a.active::after,
 .site-header nav a[aria-current="page"]::after {
@@ -121,11 +126,7 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 /* -------------------------
    HERO (dark scrim + glass)
    ------------------------- */
-.hero-wrap {
-  position: relative;
-  /* pull the hero down a few pixels to overlap the next section and kill seams */
-  margin-bottom: -4px;
-}
+.hero-wrap { position: relative; margin-bottom: -4px; }
 
 .hero-video {
   position: relative;
@@ -136,9 +137,8 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 .hero-video video {
   position: absolute;
   left: 0;
-  top: calc(var(--hero-crop) * -1);            /* push video up so any top band is out of view */
+  top: calc(var(--hero-crop) * -1);
   width: 100%;
-  /* extend beyond the container by +16px to avoid bottom letterbox on some devices */
   height: calc(100% + var(--hero-crop) + 16px);
   object-fit: cover !important;
   object-position: center top;
@@ -152,7 +152,7 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
   background: linear-gradient(180deg, rgba(15,15,12,.62) 0%, rgba(15,15,12,.38) 42%, rgba(15,15,12,.50) 100%);
 }
 
-/* glass panel behind the hero copy */
+/* glass panel behind hero copy */
 .glass-panel {
   background: linear-gradient(180deg, rgba(15,15,12,.38), rgba(15,15,12,.24));
   border: 1px solid rgba(255,255,255,.18);
@@ -167,7 +167,7 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 .hero-title  { @apply font-display; color:#fff; font-size: clamp(2.4rem, 4vw + 1rem, 4.2rem); line-height:1.05; text-shadow: 0 10px 36px rgba(0,0,0,.55), 0 1px 0 rgba(0,0,0,.35); letter-spacing: -0.01em; }
 .hero-sub    { color: rgba(255,255,255,.95); font-size: clamp(1.125rem, 1vw + .75rem, 1.25rem); max-width: 54ch; }
 
-/* the three badges */
+/* hero badges */
 .hero-badges { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .5rem; }
 .hero-badge  { color: rgba(255,255,255,.95); font-size: 13px; padding: .25rem .75rem; border-radius: 9999px; background: rgba(15,15,12,.35); border: 1px solid rgba(255,255,255,.18); }
 
@@ -175,7 +175,7 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
    Sticky mobile booking CTA
    ------------------------- */
 .sticky-book { @apply fixed bottom-4 inset-x-4 z-50 md:hidden; }
-.sticky-book a { @apply btn btn-primary w-full text-center; }
+.sticky-book a { @apply btn btn-gold btn--lg w-full text-center; }
 
 /* -------------------------
    Divider
@@ -196,26 +196,13 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 .footer .divider { border-top: 1px solid rgba(248,250,246,.22); }
 
 /* -------------------------
-   Page hero (Story, etc.)
+   Page hero (Story / Contact)
    ------------------------- */
-.page-hero {
-  position:relative;
-  min-height: 44svh;
-  background-size: cover;
-  background-position: center;
-  border-bottom: 1px solid rgba(0,0,0,.08);
-}
-.page-hero::before {
-  content:"";
-  position:absolute; inset:0;
-  background: linear-gradient(180deg, rgba(15,15,12,.62) 0%, rgba(15,15,12,.40) 60%, rgba(15,15,12,.18) 100%);
-}
+.page-hero { position:relative; min-height: 44svh; background-size: cover; background-position: center; border-bottom: 1px solid rgba(0,0,0,.08); }
+.page-hero::before { content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(15,15,12,.62) 0%, rgba(15,15,12,.40) 60%, rgba(15,15,12,.18) 100%); }
 .page-hero-inner { @apply container-wide; padding-top: 5rem; padding-bottom: 5rem; }
 .page-hero h1 { color:#fff; font-weight:800; font-size: clamp(2.25rem, 3.5vw + 1rem, 3.5rem); text-shadow: 0 8px 28px rgba(0,0,0,.5); }
 .page-hero p  { color: rgba(255,255,255,.9); font-size: 1.125rem; max-width: 48ch; }
-
-.page-section { @apply container-wide py-12; }
-.page-card    { @apply card p-6; }
 
 /* -------------------------
    Room card CTA
@@ -232,13 +219,13 @@ a { @apply underline-offset-2 hover:underline; color: #0F3D2E; } /* forest */
 }
 .room-cta:hover{ filter: brightness(0.98); transform: translateY(-1px); }
 
+/* Gallery arrow buttons (main & lightbox) */
+.gallery-arrow{
+  @apply absolute top-1/2 -translate-y-1/2 inline-flex h-10 w-10 items-center justify-center rounded-full
+         bg-white/90 text-timber shadow hover:bg-white focus:outline-none;
+}
+
 /* --- Footer polish and link visibility --- */
-.site-footer .footer-heading {
-  @apply font-display font-semibold tracking-wide text-offwhite;
-}
-.site-footer .link {
-  @apply text-offwhite/95 underline-offset-2 hover:underline;
-}
-.site-footer .social {
-  @apply inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-offwhite transition;
-}
+.site-footer .footer-heading { @apply font-display font-semibold tracking-wide text-offwhite; }
+.site-footer .link           { @apply text-offwhite/95 underline-offset-2 hover:underline; }
+.site-footer .social         { @apply inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-offwhite transition; }
