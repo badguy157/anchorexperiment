@@ -24,6 +24,17 @@ h1, h2, h3, h4 { @apply font-display tracking-tight; }
    ========================= */
 a { @apply underline-offset-2 hover:underline; color:#0F3D2E; } /* forest */
 
+/* --- CTA safeguard: ensure CTA anchors never look like plain links --- */
+a.btn-cta,
+a.btn-gold,
+a.btn-contrast,
+a.btn-light,
+a.btn-outline,
+a.room-cta {
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+}
+
 /* =========================================================
    BUTTONS — used site-wide (gold = primary CTA)
    ========================================================= */
@@ -35,15 +46,19 @@ a { @apply underline-offset-2 hover:underline; color:#0F3D2E; } /* forest */
 .btn--sm { @apply px-4 py-2 text-[0.95rem]; }
 
 /* Primary (gold) */
-.btn-gold{
+.btn-gold,
+.btn-cta { /* .btn-cta is an alias of .btn-gold */
   background: linear-gradient(180deg,#C6A15B 0%, #B9924B 100%);
   color:#1f2a22;                            /* dark/near-black for contrast */
   border: 1px solid rgba(107,73,36,.28);
   box-shadow: 0 2px 0 rgba(0,0,0,.08), 0 8px 18px rgba(198,161,91,.25);
 }
-.btn-gold:hover   { filter: brightness(.98); transform: translateY(-1px); box-shadow: 0 2px 0 rgba(0,0,0,.08), 0 12px 24px rgba(198,161,91,.33); }
-.btn-gold:focus   { outline: none; box-shadow: 0 0 0 3px rgba(198,161,91,.35); }
-.btn-gold:active  { transform: translateY(0); filter: brightness(.96); }
+.btn-gold:hover,
+.btn-cta:hover   { filter: brightness(.98); transform: translateY(-1px); box-shadow: 0 2px 0 rgba(0,0,0,.08), 0 12px 24px rgba(198,161,91,.33); }
+.btn-gold:focus,
+.btn-cta:focus   { outline: none; box-shadow: 0 0 0 3px rgba(198,161,91,.35); }
+.btn-gold:active,
+.btn-cta:active  { transform: translateY(0); filter: brightness(.96); }
 
 /* Secondary (dark) if you ever need it */
 .btn-contrast{
@@ -203,6 +218,12 @@ a { @apply underline-offset-2 hover:underline; color:#0F3D2E; } /* forest */
   box-shadow: 0 2px 0 rgba(0,0,0,.08), 0 8px 18px rgba(198,161,91,.25);
 }
 .room-cta:hover{ filter: brightness(0.98); transform: translateY(-1px); }
+
+/* Gallery arrow buttons (main & lightbox) */
+.gallery-arrow{
+  @apply absolute top-1/2 -translate-y-1/2 inline-flex h-10 w-10 items-center justify-center rounded-full
+         bg-white/90 text-timber shadow hover:bg-white focus:outline-none;
+}
 
 /* --- Footer polish and link visibility --- */
 .site-footer .footer-heading { @apply font-display font-semibold tracking-wide text-offwhite; }

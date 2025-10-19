@@ -1,8 +1,6 @@
 // components/HeroMedia.tsx
 "use client";
 
-import Button from "@/components/Button";
-
 export default function HeroMedia() {
   return (
     <section className="hero-wrap">
@@ -17,9 +15,21 @@ export default function HeroMedia() {
                 Rooms with breakfast, honest food &amp; ale, and a village pub that still feels like a village pub.
               </p>
 
+              {/* CTA row */}
               <div className="mt-5 flex gap-3">
-                <Button href="/rooms#booking" variant="cta">Book Your Stay</Button>
-                <Button href="/eat-and-drink" variant="light">See Menus</Button>
+                <a
+                  href="/rooms#booking"
+                  className="inline-flex items-center rounded-xl px-5 py-2.5 btn-cta no-underline focus:outline-none focus:ring-2 focus:ring-brass/40"
+                >
+                  Book Your Stay
+                </a>
+
+                <a
+                  href="/eat-and-drink"
+                  className="inline-flex items-center rounded-xl px-5 py-2.5 btn-light no-underline focus:outline-none focus:ring-2 focus:ring-white/30"
+                >
+                  See Menus
+                </a>
               </div>
 
               <div className="mt-4 flex flex-wrap gap-2">
