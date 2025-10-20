@@ -6,6 +6,7 @@ import BookingWidget from "@/components/BookingWidget";
 import Reviews from "@/components/Reviews";
 import VenueCard from "@/components/VenueCard";
 import Button from "@/components/Button";
+import TitleBand from "@/components/TitleBand";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       <HeroMedia />
       <StickyBook />
 
-      {/* Rooms promo */}
+      {/* Rooms promo (kept as a centered card) */}
       <section className="section-sm">
         <div className="container-narrow">
           <div className="card p-8 text-center">
@@ -38,14 +39,14 @@ export default function Home() {
       {/* Optional strip */}
       <Eventstrip />
 
-      {/* Eat & Drink */}
+      {/* Eat & Drink — centered, uniform header */}
+      <TitleBand
+        eyebrow="Food & Drink"
+        title="Eat & Drink"
+        subtitle="Local ales pulled right, honest Northumbrian plates, and a quiet garden café."
+      />
       <section className="section">
         <div className="container-wide">
-          <h2 className="text-3xl sm:text-4xl font-display font-bold">
-            Eat &amp; Drink
-          </h2>
-          <div className="rule my-6" />
-
           <div className="grid md:grid-cols-3 gap-6">
             <VenueCard
               title="Judge & Barrel Bar"
@@ -69,12 +70,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Story (compact — no inner header, no CTA) */}
+      {/* Our Story — centered, uniform header */}
+      <TitleBand
+        eyebrow="History"
+        title="Our Story"
+        subtitle="Six centuries beside the South Tyne—still welcoming travellers, walkers and families."
+      />
       <section className="section">
         <div className="container-wide">
-          <h2 className="text-3xl sm:text-4xl font-display font-bold">Our Story</h2>
-          <div className="rule my-6" />
-
           {/* Compact, inline story cards */}
           <div className="grid md:grid-cols-4 gap-6">
             <article className="card p-5">
@@ -112,24 +115,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Guest Testimonials */}
+      {/* Testimonials — centered, uniform header */}
+      <TitleBand
+        eyebrow="Kind Words"
+        title="What Guests Say"
+        subtitle="Recent comments from guests who stayed, dined and explored from The Anchor."
+      />
       <section className="section" id="testimonials" aria-labelledby="testimonials-heading">
-        <div className="container-wide">
-          <h2 id="testimonials-heading" className="text-3xl sm:text-4xl font-display font-bold">
-            What Guests Say
-          </h2>
-          <div className="rule my-6" />
-        </div>
         {/* Card list from your component */}
         <Reviews showTitle={false} />
       </section>
 
-      {/* Find Us + Map */}
+      {/* Find Us — centered, uniform header */}
+      <TitleBand
+        eyebrow="Visit"
+        title="Find Us"
+        subtitle="We’re right by the bridge in Haydon Bridge—easy for Hadrian’s Wall, Hexham and Kielder."
+      />
       <section className="section">
         <div className="container-wide">
-          <h2 className="text-3xl sm:text-4xl font-display font-bold">Find Us</h2>
-          <div className="rule my-6" />
-
           <div className="grid lg:grid-cols-[2fr_1fr] gap-6 items-stretch">
             {/* Map */}
             <div className="card p-0 overflow-hidden">

@@ -1,4 +1,5 @@
 // app/rooms/page.tsx
+import TitleBand from "@/components/TitleBand";
 import Button from "@/components/Button";
 import RoomGallery from "@/components/RoomGallery";
 import BookingWidget from "@/components/BookingWidget";
@@ -12,16 +13,12 @@ export const metadata = {
 export default function RoomsPage() {
   return (
     <main>
-      {/* Page header (no hero image) */}
-      <section className="section-sm">
-        <div className="container-wide">
-          <h1 className="text-3xl sm:text-4xl font-display font-bold">Stay</h1>
-          <p className="mt-2 text-timber/80">
-            Comfortable riverside rooms with breakfast included.
-          </p>
-          <div className="rule my-6" />
-        </div>
-      </section>
+      {/* Centered, uniform page header */}
+      <TitleBand
+        eyebrow="Stay"
+        title="Rooms"
+        subtitle="Comfortable riverside rooms with breakfast included."
+      />
 
       {/* Quick availability widget (same as homepage) */}
       <section id="booking" className="section-sm">
@@ -58,9 +55,7 @@ export default function RoomsPage() {
               ]}
             />
             <div>
-              <h2 className="text-xl font-display font-bold">
-                Double Room – Ensuite
-              </h2>
+              <h2 className="text-xl font-display font-bold">Double Room – Ensuite</h2>
 
               <p className="mt-3">
                 Warm, comfortable and a little bit quirky—recently refreshed
@@ -69,24 +64,13 @@ export default function RoomsPage() {
               </p>
 
               <ul className="mt-3 space-y-2">
+                <li><strong>Sleeps:</strong> up to 2</li>
+                <li><strong>Bed:</strong> Double</li>
+                <li><strong>Bathroom:</strong> Private ensuite</li>
+                <li><strong>Breakfast:</strong> Full English included</li>
+                <li><strong>Wi-Fi:</strong> Free</li>
                 <li>
-                  <strong>Sleeps:</strong> up to 2
-                </li>
-                <li>
-                  <strong>Bed:</strong> Double
-                </li>
-                <li>
-                  <strong>Bathroom:</strong> Private ensuite
-                </li>
-                <li>
-                  <strong>Breakfast:</strong> Full English included
-                </li>
-                <li>
-                  <strong>Wi-Fi:</strong> Free
-                </li>
-                <li>
-                  <strong>Extras:</strong> Original features; some with
-                  fireplaces / wooden shutters
+                  <strong>Extras:</strong> Original features; some with fireplaces / wooden shutters
                 </li>
               </ul>
 
@@ -117,26 +101,15 @@ export default function RoomsPage() {
 
               <p className="mt-3">
                 Charming double with original wooden shutters and a private
-                bathroom across the passage—warm, comfortable and
-                characterful.
+                bathroom across the passage—warm, comfortable and characterful.
               </p>
 
               <ul className="mt-3 space-y-2">
-                <li>
-                  <strong>Sleeps:</strong> up to 2
-                </li>
-                <li>
-                  <strong>Bed:</strong> Double
-                </li>
-                <li>
-                  <strong>Bathroom:</strong> Private (separate room)
-                </li>
-                <li>
-                  <strong>Breakfast:</strong> Full English included
-                </li>
-                <li>
-                  <strong>Wi-Fi:</strong> Free
-                </li>
+                <li><strong>Sleeps:</strong> up to 2</li>
+                <li><strong>Bed:</strong> Double</li>
+                <li><strong>Bathroom:</strong> Private (separate room)</li>
+                <li><strong>Breakfast:</strong> Full English included</li>
+                <li><strong>Wi-Fi:</strong> Free</li>
               </ul>
 
               <div className="mt-5">
@@ -170,21 +143,11 @@ export default function RoomsPage() {
               </p>
 
               <ul className="mt-3 space-y-2">
-                <li>
-                  <strong>Sleeps:</strong> up to 2
-                </li>
-                <li>
-                  <strong>Beds:</strong> 2 × Single
-                </li>
-                <li>
-                  <strong>Bathroom:</strong> Private ensuite
-                </li>
-                <li>
-                  <strong>Breakfast:</strong> Full English included
-                </li>
-                <li>
-                  <strong>Wi-Fi:</strong> Free
-                </li>
+                <li><strong>Sleeps:</strong> up to 2</li>
+                <li><strong>Beds:</strong> 2 × Single</li>
+                <li><strong>Bathroom:</strong> Private ensuite</li>
+                <li><strong>Breakfast:</strong> Full English included</li>
+                <li><strong>Wi-Fi:</strong> Free</li>
               </ul>
 
               <div className="mt-5">
@@ -218,26 +181,15 @@ export default function RoomsPage() {
 
               <ul className="mt-3 space-y-2">
                 <li>
-                  <strong>Sleeps:</strong> up to 4 (2 adults + 1 child under 16 as
-                  standard)
+                  <strong>Sleeps:</strong> up to 4 (2 adults + 1 child under 16 as standard)
                 </li>
                 <li>
-                  <strong>Beds:</strong> 2 × Single &amp; 1 × Double (cot/extra bed
-                  on request; extra charge may apply)
+                  <strong>Beds:</strong> 2 × Single &amp; 1 × Double (cot/extra bed on request; extra charge may apply)
                 </li>
-                <li>
-                  <strong>Bathroom:</strong> Private ensuite
-                </li>
-                <li>
-                  <strong>Breakfast:</strong> Full English included
-                </li>
-                <li>
-                  <strong>Wi-Fi:</strong> Free
-                </li>
-                <li>
-                  <strong>In-room:</strong> Flat-screen TV, tea &amp; coffee making
-                  facilities
-                </li>
+                <li><strong>Bathroom:</strong> Private ensuite</li>
+                <li><strong>Breakfast:</strong> Full English included</li>
+                <li><strong>Wi-Fi:</strong> Free</li>
+                <li><strong>In-room:</strong> Flat-screen TV, tea &amp; coffee making facilities</li>
               </ul>
 
               <div className="mt-5">
@@ -253,18 +205,11 @@ export default function RoomsPage() {
           <div className="card p-5 lg:col-span-2">
             <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm text-timber/80">
               <li>
-                <strong>Check-in:</strong> from 3pm · <strong>Check-out:</strong> by
-                11am
+                <strong>Check-in:</strong> from 3pm · <strong>Check-out:</strong> by 11am
               </li>
-              <li>
-                <strong>Breakfast:</strong> included with all stays
-              </li>
-              <li>
-                <strong>Parking:</strong> village parking nearby
-              </li>
-              <li>
-                <strong>Pets:</strong> please enquire before booking
-              </li>
+              <li><strong>Breakfast:</strong> included with all stays</li>
+              <li><strong>Parking:</strong> village parking nearby</li>
+              <li><strong>Pets:</strong> please enquire before booking</li>
             </ul>
           </div>
         </div>
