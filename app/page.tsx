@@ -112,21 +112,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Recent Reviews */}
-<section className="section">
-  <div className="container-wide">
-    <h2 className="text-3xl sm:text-4xl font-display font-bold">Recent Reviews</h2>
-    <div className="rule my-6" />
-  </div>
-  <Reviews showTitle={false} />
-</section>
-
+      {/* Guest Testimonials */}
+      <section className="section" id="testimonials" aria-labelledby="testimonials-heading">
+        <div className="container-wide">
+          <h2 id="testimonials-heading" className="text-3xl sm:text-4xl font-display font-bold">
+            What Guests Say
+          </h2>
+          <div className="rule my-6" />
+        </div>
+        {/* Card list from your component */}
+        <Reviews showTitle={false} />
+      </section>
 
       {/* Find Us + Map */}
       <section className="section">
         <div className="container-wide">
           <h2 className="text-3xl sm:text-4xl font-display font-bold">Find Us</h2>
-        <div className="rule my-6" />
+          <div className="rule my-6" />
 
           <div className="grid lg:grid-cols-[2fr_1fr] gap-6 items-stretch">
             {/* Map */}
