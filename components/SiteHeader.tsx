@@ -3,42 +3,43 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Button from "@/components/Button";
+import BrandLogo from "@/components/BrandLogo";
 
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
-  const pathname = usePathname();
-  const active = pathname === href;
-  return (
-    <Link
-      href={href}
-      className={active ? "active px-3 py-2" : "px-3 py-2 hover:underline"}
-      aria-current={active ? "page" : undefined}
-    >
-      {children}
-    </Link>
-  );
-};
+const NAV = [
+  { href: "/rooms", label: "Stay" },
+  { href: "/eat-and-drink", label: "Eat & Drink" },
+  { href: "/whats-on", label: "What’s On" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/explore", label: "Explore" },
+  { href: "/story", label: "Our Story" },
+  { href: "/contact", label: "Contact" },
+];
 
 export default function SiteHeader() {
+  const pathname = usePathname();
+
   return (
     <header className="site-header">
-      <div className="mx-auto max-w-7xl px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="font-display text-lg">The Anchor</Link>
+      <div className="container-wide h-16 flex items-center justify-between gap-4">
+        {/* <-- PNG logo only */}
+        <BrandLogo size={40} showWordmark linkToHome variant="dark" />
 
-        <nav className="hidden md:flex items-center gap-1">
-          <NavLink href="/rooms">Stay</NavLink>
-          <NavLink href="/eat-and-drink">Eat &amp; Drink</NavLink>
-          <NavLink href="/whats-on">What’s On</NavLink>
-          <NavLink href="/gallery">Gallery</NavLink>
-          <NavLink href="/explore">Explore</NavLink>
-          <NavLink href="/story">Our Story</NavLink>
-          <NavLink href="/contact">Contact</NavLink>
-
-          {/* CTA in the navbar */}
-          <Button href="/rooms#booking" variant="cta" className="ml-3">
-            Book Your Stay
-          </Button>
+        <nav className="hidden md:flex items-center gap-6">
+          {NAV.map(({ href, label }) => {
+            const active = pathname?.startsWith(href);
+            return (
+              <Link key={href} href={href} className={active ? "active font-semibold" : ""}>
+                {label}
+              </Link>
+            );
+          })}
         </nav>
+
+        <div className="hidden sm:block">
+          <Link href="/rooms#booking" className="btn btn-gold btn--sm no-underline">
+            Book Your Stay
+          </Link>
+        </div>
       </div>
     </header>
   );

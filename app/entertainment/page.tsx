@@ -1,22 +1,73 @@
 // app/entertainment/page.tsx
-import { events } from '@/lib/data';
+import TitleBand from "@/components/TitleBand";
+import { events } from "@/lib/data";
+
+export const metadata = {
+  title: "What’s On · The Anchor",
+};
 
 export default function EntertainmentPage() {
   return (
-    <main className="section-padding bg-offwhite">
-      <div className="container-custom">
-        <h1 className="font-heading text-4xl font-bold text-forest mb-8 text-center">What’s On</h1>
+    <main>
+      {/* Compact, fast-loading header instead of a big photo hero */}
+      <TitleBand
+        eyebrow="Events"
+        title="What’s On"
+        subtitle="Live music nights, quiz evenings, and local happenings at The Anchor."
+      />
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {events.map((event, i) => (
-            <div key={i} className="bg-cream rounded-lg p-6 border-2 border-brass shadow-md">
-              <div className="text-4xl mb-2">🎤</div>
-              <h2 className="font-heading text-2xl font-semibold text-forest mb-2">{event.title}</h2>
-              <p className="text-brown">{event.description}</p>
-            </div>
-          ))}
+      <section className="section">
+        <div className="container-wide">
+          {/* Grid of event cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {events.map((event: any, i: number) => (
+              <article key={i} className="card p-6 h-full flex flex-col">
+                {/* Eyebrow / meta row */}
+                <div className="flex items-center gap-3 text-sm text-timber/70">
+                  {event.date && (
+                    <span className="inline-flex items-center rounded-full border border-black/10 px-2 py-0.5 bg-white/70">
+                      {event.date}
+                    </span>
+                  )}
+                  {event.time && <span>{event.time}</span>}
+                  {event.location && (
+                    <span className="truncate">{event.location}</span>
+                  )}
+                </div>
+
+                <h2 className="mt-2 font-display text-xl font-semibold text-forest">
+                  {event.title}
+                </h2>
+
+                {event.description && (
+                  <p className="mt-2 text-timber/90">
+                    {event.description}
+                  </p>
+                )}
+
+                {/* Optional tags / price */}
+                {(event.tags?.length || event.price) && (
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {event.tags?.map((t: string, idx: number) => (
+                      <span
+                        key={idx}
+                        className="text-xs rounded-full border border-black/10 bg-white/70 px-2 py-0.5 text-timber/80"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                    {event.price && (
+                      <span className="text-xs rounded-full border border-black/10 bg-white/70 px-2 py-0.5 text-timber/80">
+                        {event.price}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }

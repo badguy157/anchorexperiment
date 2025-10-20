@@ -41,7 +41,6 @@ a.room-cta {
 .btn {
   @apply inline-flex items-center justify-center rounded-full px-5 py-2.5 font-semibold transition;
 }
-
 .btn--lg { @apply px-6 py-3 text-base; }
 .btn--sm { @apply px-4 py-2 text-[0.95rem]; }
 
@@ -49,7 +48,7 @@ a.room-cta {
 .btn-gold,
 .btn-cta { /* .btn-cta is an alias of .btn-gold */
   background: linear-gradient(180deg,#C6A15B 0%, #B9924B 100%);
-  color:#1f2a22;                            /* dark/near-black for contrast */
+  color:#1f2a22;
   border: 1px solid rgba(107,73,36,.28);
   box-shadow: 0 2px 0 rgba(0,0,0,.08), 0 8px 18px rgba(198,161,91,.25);
 }
@@ -60,7 +59,7 @@ a.room-cta {
 .btn-gold:active,
 .btn-cta:active  { transform: translateY(0); filter: brightness(.96); }
 
-/* Secondary (dark) if you ever need it */
+/* Secondary (dark) */
 .btn-contrast{
   @apply rounded-full;
   background:#143d2f;
@@ -124,7 +123,7 @@ a.room-cta {
 }
 
 /* -------------------------
-   HERO (dark scrim + glass)
+   HOME HERO (dark scrim + glass)
    ------------------------- */
 .hero-wrap { position: relative; margin-bottom: -4px; }
 
@@ -144,15 +143,19 @@ a.room-cta {
   object-position: center top;
   transform: translateZ(0) scale(1.06);
 }
-
 .hero-overlay { position: absolute; inset: 0; display: flex; align-items: center; }
 .hero-overlay::before{
   content:"";
   position:absolute; inset:0;
-  background: linear-gradient(180deg, rgba(15,15,12,.62) 0%, rgba(15,15,12,.38) 42%, rgba(15,15,12,.50) 100%);
+  /* slightly darker than before for better legibility */
+  background: linear-gradient(
+    180deg,
+    rgba(15,15,12,.68) 0%,
+    rgba(15,15,12,.44) 42%,
+    rgba(15,15,12,.56) 100%
+  );
 }
-
-/* glass panel behind hero copy */
+/* glass panel behind the hero copy */
 .glass-panel {
   background: linear-gradient(180deg, rgba(15,15,12,.38), rgba(15,15,12,.24));
   border: 1px solid rgba(255,255,255,.18);
@@ -164,8 +167,8 @@ a.room-cta {
 
 .hero-inner { @apply container-wide; }
 .hero-kicker { text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,.85); font-size: .75rem; }
-.hero-title  { @apply font-display; color:#fff; font-size: clamp(2.4rem, 4vw + 1rem, 4.2rem); line-height:1.05; text-shadow: 0 10px 36px rgba(0,0,0,.55), 0 1px 0 rgba(0,0,0,.35); letter-spacing: -0.01em; }
-.hero-sub    { color: rgba(255,255,255,.95); font-size: clamp(1.125rem, 1vw + .75rem, 1.25rem); max-width: 54ch; }
+.hero-title  { @apply font-display; color:#fff; font-size: clamp(2.4rem, 4vw + 1rem, 4.2rem); line-height:1.05; text-shadow: 0 10px 36px rgba(0,0,0,.55), 0 1px 0 rgba(0,0,0,.35); letter-spacing: -0.01em; max-width: 24ch; }
+.hero-sub    { color: rgba(255,255,255,.95); font-size: clamp(1.125rem, 1vw + .75rem, 1.25rem); max-width: 58ch; }
 
 /* hero badges */
 .hero-badges { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .5rem; }
@@ -196,13 +199,40 @@ a.room-cta {
 .footer .divider { border-top: 1px solid rgba(248,250,246,.22); }
 
 /* -------------------------
-   Page hero (Story / Contact)
+   INNER PAGE HERO (Story / Contact / Rooms)
    ------------------------- */
-.page-hero { position:relative; min-height: 44svh; background-size: cover; background-position: center; border-bottom: 1px solid rgba(0,0,0,.08); }
-.page-hero::before { content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(15,15,12,.62) 0%, rgba(15,15,12,.40) 60%, rgba(15,15,12,.18) 100%); }
+.page-hero {
+  position:relative;
+  min-height: 44svh;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  /* add a bit of breathing room after the hero */
+  margin-bottom: 1rem;
+}
+.page-hero::before {
+  content:"";
+  position:absolute; inset:0;
+  /* DARKER SCRIM for better legibility on all images */
+  background: linear-gradient(
+    180deg,
+    rgba(15,15,12,.72) 0%,
+    rgba(15,15,12,.50) 56%,
+    rgba(15,15,12,.34) 100%
+  );
+}
 .page-hero-inner { @apply container-wide; padding-top: 5rem; padding-bottom: 5rem; }
-.page-hero h1 { color:#fff; font-weight:800; font-size: clamp(2.25rem, 3.5vw + 1rem, 3.5rem); text-shadow: 0 8px 28px rgba(0,0,0,.5); }
-.page-hero p  { color: rgba(255,255,255,.9); font-size: 1.125rem; max-width: 48ch; }
+.page-hero h1 {
+  color:#fff;
+  font-weight:800;
+  font-size: clamp(2.25rem, 3.5vw + 1rem, 3.5rem);
+  /* stronger shadow so it reads on busy backgrounds */
+  text-shadow: 0 12px 36px rgba(0,0,0,.55), 0 2px 0 rgba(0,0,0,.35);
+}
+.page-hero p  { color: rgba(255,255,255,.92); font-size: 1.125rem; max-width: 48ch; }
+
+/* give an extra nudge of space below any inner hero before the next section */
+.page-hero + * { margin-top: .5rem; }
 
 /* -------------------------
    Room card CTA
@@ -219,10 +249,12 @@ a.room-cta {
 }
 .room-cta:hover{ filter: brightness(0.98); transform: translateY(-1px); }
 
-/* Gallery arrow buttons (main & lightbox) */
+/* -------------------------
+   Gallery arrow buttons (main & lightbox)
+   ------------------------- */
 .gallery-arrow{
   @apply absolute top-1/2 -translate-y-1/2 inline-flex h-10 w-10 items-center justify-center rounded-full
-         bg-white/90 text-timber shadow hover:bg-white focus:outline-none;
+         bg-white/90 text-slate-800 shadow hover:bg-white focus:outline-none;
 }
 
 /* --- Footer polish and link visibility --- */
