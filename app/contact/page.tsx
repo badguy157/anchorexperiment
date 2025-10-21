@@ -52,13 +52,13 @@ export default function ContactPage() {
 
               <p>
                 Tel:{" "}
-                <a className="link" href="tel:+441234567890">
-                  01234 567 890
+                <a className="link" href="tel:+441434211073">
+                  01434 211073
                 </a>
                 <br />
                 Email:{" "}
-                <a className="link" href="mailto:info@theanchorbridge.co.uk">
-                  info@theanchorbridge.co.uk
+                <a className="link" href="mailto:hello@anchorhotelhaydonbridge.com">
+                  hello@anchorhotelhaydonbridge.com
                 </a>
               </p>
 

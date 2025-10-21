@@ -1,3 +1,4 @@
+// app/eat-and-drink/page.tsx
 import Image from "next/image";
 import Button from "@/components/Button";
 import { venues } from "@/lib/data";
@@ -23,7 +24,8 @@ export default function EatDrink() {
       <div className="container-wide">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {venues.map((venue) => {
-            const isRestaurant = venue.id === "restaurant" || /salmon/i.test(venue.name);
+            const isRestaurant =
+              venue.id === "restaurant" || /salmon/i.test(venue.name);
 
             return (
               <section
@@ -40,13 +42,20 @@ export default function EatDrink() {
                     sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
                   />
                 </div>
+
                 <div className="p-5">
                   <h2 className="font-heading text-2xl font-semibold text-forest mb-1">
                     {venue.name}
                   </h2>
+
                   <p className="text-brown mb-3">{venue.description}</p>
-                  {venue.hours && (
-                    <p className="text-sm text-brown/80 mb-4">Hours: {venue.hours}</p>
+
+                  {/* Show hours ONLY for Salmon’s Leap Restaurant */}
+                  {isRestaurant && (
+                    <p className="text-sm text-brown/80 mb-4">
+                      <span className="font-semibold">Kitchen hours (daily):</span>{" "}
+                      Breakfast 5:00–9:00 · Lunch 12:00–14:00 · Dinner 17:00–20:00
+                    </p>
                   )}
 
                   {/* Actions */}
@@ -87,7 +96,7 @@ export default function EatDrink() {
                       )}
                     </div>
                   ) : (
-                    // Other venues: no “View details” link
+                    // Other venues: no hours, no details button
                     <div className="mt-1" />
                   )}
                 </div>

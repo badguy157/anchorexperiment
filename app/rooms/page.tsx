@@ -1,6 +1,6 @@
 // app/rooms/page.tsx
 import TitleBand from "@/components/TitleBand";
-import Button from "@/components/Button";
+import RoomCTA from "@/components/RoomCTA";
 import RoomGallery from "@/components/RoomGallery";
 import BookingWidget from "@/components/BookingWidget";
 
@@ -10,20 +10,58 @@ export const metadata = {
     "Comfortable riverside rooms with breakfast included. Doubles, twins and a flexible family room at The Anchor Hotel, Haydon Bridge.",
 };
 
-export default function RoomsPage() {
+type RoomsPageProps = {
+  searchParams?: {
+    dateIn?: string;
+    dateOut?: string;
+    guests?: string;
+  };
+};
+
+function isISODate(s?: string | null) {
+  return !!s && /^\d{4}-\d{2}-\d{2}$/.test(s);
+}
+
+export default function RoomsPage({ searchParams = {} }: RoomsPageProps) {
+  const { dateIn, dateOut, guests } = searchParams;
+  const guestsNum = guests ? parseInt(guests, 10) : undefined;
+
+  // Are dates present and valid?
+  const hasDates = isISODate(dateIn) && isISODate(dateOut);
+
+  // Build a /book link for a given room and preserve dates/guests
+  const bookHref = (roomId: string) => {
+    const qp = new URLSearchParams();
+    qp.set("room", roomId);
+    if (dateIn) qp.set("checkIn", dateIn);
+    if (dateOut) qp.set("checkOut", dateOut);
+    if (guests) qp.set("guests", guests);
+    const qs = qp.toString();
+    return `/book${qs ? `?${qs}` : ""}`;
+  };
+
   return (
     <main>
-      {/* Centered, uniform page header */}
+      {/* Centered header */}
       <TitleBand
         eyebrow="Stay"
         title="Rooms"
         subtitle="Comfortable riverside rooms with breakfast included."
       />
 
-      {/* Quick availability widget (same as homepage) */}
+      {/* Pre-filled availability widget (reads ?dateIn&dateOut&guests) */}
       <section id="booking" className="section-sm">
         <div className="container-wide">
-          <BookingWidget />
+          <BookingWidget
+            initialDateIn={dateIn || null}
+            initialDateOut={dateOut || null}
+            initialGuests={
+              typeof guestsNum === "number" && !Number.isNaN(guestsNum)
+                ? guestsNum
+                : null
+            }
+          />
+
           {/* Reassurance bar */}
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div className="card p-3 text-center text-sm font-semibold text-timber/90">
@@ -36,6 +74,12 @@ export default function RoomsPage() {
               Secure booking
             </div>
           </div>
+
+          {!hasDates && (
+            <p className="mt-3 text-center text-sm text-timber/70">
+              Choose your dates above to enable booking.
+            </p>
+          )}
         </div>
       </section>
 
@@ -69,21 +113,17 @@ export default function RoomsPage() {
                 <li><strong>Bathroom:</strong> Private ensuite</li>
                 <li><strong>Breakfast:</strong> Full English included</li>
                 <li><strong>Wi-Fi:</strong> Free</li>
-                <li>
-                  <strong>Extras:</strong> Original features; some with fireplaces / wooden shutters
-                </li>
+                <li><strong>Extras:</strong> Original features; some with fireplaces / wooden shutters</li>
               </ul>
 
               <div className="mt-5">
-                <Button href="/rooms#booking" variant="cta" full>
-                  Check availability
-                </Button>
+                <RoomCTA hasDates={hasDates} href={bookHref("double-ensuite")} />
               </div>
               <p className="text-forest mt-2 font-semibold">From £95 / night</p>
             </div>
           </article>
 
-          {/* Double Room — Ensuite with Separate Private Bathroom */}
+          {/* Double Room — Ensuite (Separate Private Bathroom) */}
           <article className="card p-6 grid lg:grid-cols-2 gap-6 items-start">
             <RoomGallery
               alt="Double Room – Ensuite with Separate Private Bathroom"
@@ -113,9 +153,10 @@ export default function RoomsPage() {
               </ul>
 
               <div className="mt-5">
-                <Button href="/rooms#booking" variant="cta" full>
-                  Check availability
-                </Button>
+                <RoomCTA
+                  hasDates={hasDates}
+                  href={bookHref("double-separate-bathroom")}
+                />
               </div>
               <p className="text-forest mt-2 font-semibold">From £95 / night</p>
             </div>
@@ -151,15 +192,13 @@ export default function RoomsPage() {
               </ul>
 
               <div className="mt-5">
-                <Button href="/rooms#booking" variant="cta" full>
-                  Check availability
-                </Button>
+                <RoomCTA hasDates={hasDates} href={bookHref("twin-ensuite")} />
               </div>
               <p className="text-forest mt-2 font-semibold">From £95 / night</p>
             </div>
           </article>
 
-          {/* Family Suite */}
+          {/* Family Room */}
           <article className="card p-6 grid lg:grid-cols-2 gap-6 items-start">
             <RoomGallery
               alt="Family Suite"
@@ -193,9 +232,7 @@ export default function RoomsPage() {
               </ul>
 
               <div className="mt-5">
-                <Button href="/rooms#booking" variant="cta" full>
-                  Check availability
-                </Button>
+                <RoomCTA hasDates={hasDates} href={bookHref("family-room")} />
               </div>
               <p className="text-forest mt-2 font-semibold">From £115 / night</p>
             </div>
