@@ -9,6 +9,28 @@ const MAIN_MENU_URL =
 // Set when you have it; leave null for a disabled-looking button.
 const BREAKFAST_MENU_URL: string | null = null;
 
+// ---- Ordering helpers ----
+type Kind = "restaurant" | "bar" | "cafe" | "lounge" | "other";
+
+function kindOf(v: any): Kind {
+  const id = String(v.id || "").toLowerCase();
+  const name = String(v.name || "").toLowerCase();
+
+  if (id.includes("restaurant") || /salmon/.test(name)) return "restaurant";
+  if (id.includes("bar") || /bar|judge|barrel/.test(name)) return "bar";
+  if (id.includes("cafe") || id.includes("café") || /cafe|café/.test(name)) return "cafe";
+  if (id.includes("lounge") || id.includes("commodore") || /lounge/.test(name)) return "lounge";
+  return "other";
+}
+
+const ORDER: Kind[] = ["restaurant", "bar", "cafe", "lounge"];
+const rank = (v: any) => {
+  const k = kindOf(v);
+  const i = ORDER.indexOf(k);
+  return i === -1 ? 999 : i;
+};
+const sortedVenues = [...venues].sort((a, b) => rank(a) - rank(b));
+
 export default function EatDrink() {
   return (
     <main className="section bg-offwhite">
@@ -23,13 +45,14 @@ export default function EatDrink() {
 
       <div className="container-wide">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {venues.map((venue) => {
+          {sortedVenues.map((venue) => {
             const isRestaurant =
-              venue.id === "restaurant" || /salmon/i.test(venue.name);
+              venue.id === "restaurant" ||
+              /salmon/.test(String(venue.name || "").toLowerCase());
 
             return (
               <section
-                key={venue.id}
+                key={venue.id || venue.name}
                 id={venue.id}
                 className="bg-cream rounded-lg overflow-hidden border border-cream"
               >
