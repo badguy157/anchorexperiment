@@ -112,6 +112,13 @@ export default function Home() {
               </p>
             </article>
           </div>
+
+          {/* Read more CTA (subtle, centered, doesn’t compete with gold CTAs) */}
+          <div className="mt-6 text-center">
+            <Button href="/story" variant="dark" size="sm">
+              Read more about our history
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -121,7 +128,11 @@ export default function Home() {
         title="What Guests Say"
         subtitle="Recent comments from guests who stayed, dined and explored from The Anchor."
       />
-      <section className="section" id="testimonials" aria-labelledby="testimonials-heading">
+      <section
+        className="section"
+        id="testimonials"
+        aria-labelledby="testimonials-heading"
+      >
         {/* Card list from your component */}
         <Reviews showTitle={false} />
       </section>
