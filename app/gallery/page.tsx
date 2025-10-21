@@ -5,6 +5,12 @@ import TitleBand from "@/components/TitleBand";
 export const metadata = { title: "Gallery · The Anchor" };
 
 const gallery: { alt: string; src: string }[] = [
+  // NEW additions from /public
+  { alt: "Heritage plaque", src: "/history-plaque.jpg" },
+  { alt: "Hero poster still", src: "/hero-poster.jpg" },
+  { alt: "Anchor riverside hero", src: "/anchor-hero.jpg" },
+
+  // Existing images
   { alt: "Anchor exterior", src: "/Anchor Hotel and Ivy Pathway.png" },
   { alt: "Secret Garden Café", src: "/venues/secret-garden-cafe.jpg" },
   { alt: "Salmon’s Leap Restaurant", src: "/venues/salmons-leap.jpg" },
