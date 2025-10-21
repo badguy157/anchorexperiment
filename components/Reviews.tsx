@@ -120,13 +120,6 @@ export default function Reviews({ showTitle = true }: ReviewsProps) {
           </article>
         ))}
       </div>
-
-      {/* Optional CTA to bolster trust; hide if not needed */}
-      <div className="mt-6 text-center">
-        <a href="/gallery" className="btn-light btn--sm">
-          See more of the inn
-        </a>
-      </div>
     </div>
   );
 }
