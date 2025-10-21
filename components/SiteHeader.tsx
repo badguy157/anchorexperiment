@@ -36,7 +36,8 @@ export default function SiteHeader() {
         </nav>
 
         <div className="hidden sm:block">
-          <Link href="/rooms#booking" className="btn btn-gold btn--sm no-underline">
+          {/* UPDATED: send to Rooms page (no #booking anchor) */}
+          <Link href="/rooms" className="btn btn-gold btn--sm no-underline">
             Book Your Stay
           </Link>
         </div>

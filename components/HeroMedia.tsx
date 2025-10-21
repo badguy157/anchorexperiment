@@ -2,7 +2,6 @@
 "use client";
 
 import Button from "@/components/Button";
-// NEW
 import HeritagePlaque from "@/components/HeritagePlaque";
 
 export default function HeroMedia() {
@@ -12,7 +11,6 @@ export default function HeroMedia() {
         <video autoPlay loop muted playsInline src="/hero.mp4" />
         <div className="hero-overlay">
           <div className="hero-inner">
-            {/* Glass panel with tighter max width so the title doesn’t feel too wide */}
             <div className="glass-panel max-w-3xl md:max-w-4xl p-6 sm:p-8 md:p-10 rounded-2xl">
               <div className="hero-kicker">Riverside Inn · Northumberland</div>
 
@@ -36,7 +34,7 @@ export default function HeroMedia() {
                 <span className="hero-badge">Walk to Hadrian’s Wall</span>
               </div>
 
-              {/* NEW: heritage trust badge under existing hero badges */}
+              {/* Heritage plaque badge */}
               <HeritagePlaque />
             </div>
           </div>
