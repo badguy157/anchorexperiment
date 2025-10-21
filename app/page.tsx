@@ -74,7 +74,7 @@ export default function Home() {
       <TitleBand
         eyebrow="History"
         title="Our Story"
-        subtitle="Six centuries beside the South Tyne—still welcoming travellers, walkers and families."
+        subtitle="Six centuries beside the South Tyne, still welcoming travellers, walkers and families."
       />
       <section className="section">
         <div className="container-wide">
