@@ -153,7 +153,7 @@ export const events: EventItem[] = [
 
   // NEW
   {
-    title: "Poker Night",
+    title: "7:30 PM Night",
     time: "Fridays · 7:30pm",
     venue: "Commodore Lounge",
     description:

@@ -4,6 +4,21 @@ import { events } from "@/lib/data";
 
 export const metadata = { title: "What’s On · The Anchor" };
 
+// Local extra so you don’t need to edit shared data yet
+const EXTRA_EVENTS = [
+  {
+    date: "Saturdays",
+    time: "10:30pm",
+    title: "Live Music: Acoustic Set",
+    description:
+      "Local duo playing folk and crowd favourites, easy-going tunes, good beer, no tickets needed.",
+    tags: ["Live Music"],
+    price: "Free",
+  },
+];
+
+const ALL_EVENTS = [...EXTRA_EVENTS, ...events];
+
 export default function EntertainmentPage() {
   return (
     <main>
@@ -17,8 +32,8 @@ export default function EntertainmentPage() {
       <section className="section">
         <div className="container-wide">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {events.map((event: any, i: number) => (
-              <article key={i} className="card p-6 h-full flex flex-col">
+            {ALL_EVENTS.map((event: any, i: number) => (
+              <article key={i} className="card p-6 h-full flex flex-col" id={String(i)}>
                 <div className="flex items-center gap-3 text-sm text-timber/70">
                   {event.date && (
                     <span className="inline-flex items-center rounded-full border border-black/10 px-2 py-0.5 bg-white/70">
