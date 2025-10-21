@@ -18,9 +18,10 @@ export default function HeroMedia() {
                 The Anchor Hotel, Haydon Bridge
               </h1>
 
+              {/* updated copy (no “village” repetition) */}
               <p className="hero-sub mt-3 max-w-[58ch]">
-                Rooms with breakfast, honest food &amp; ale, and a village pub that
-                still feels like a village pub.
+                Rooms with breakfast, honest food &amp; ale, and a pub that still
+                feels like a pub.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-3">
@@ -34,7 +35,7 @@ export default function HeroMedia() {
                 <span className="hero-badge">Walk to Hadrian’s Wall</span>
               </div>
 
-              {/* Heritage plaque badge */}
+              {/* Compact, mobile-friendly plaque */}
               <HeritagePlaque />
             </div>
           </div>
